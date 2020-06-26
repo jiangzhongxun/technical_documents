@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //TODO 用户信息
         auth.inMemoryAuthentication()
                 .withUser("root")
                 .password(passwordEncoder().encode("123"))
