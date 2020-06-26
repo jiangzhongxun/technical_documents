@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+您好，江南一点雨
+
+<a href="http://localhost:8080/oauth/authorize?client_id=javaboy&response_type=token&scope=all&redirect_uri=http://localhost:8082/01.html">第三方登陆(简化模式)</a>
+
+<div id="result"></div>
+
+<script>
+    let hash = window.location.hash;
+    if (hash && hash.length > 0) {
+        let params = hash.substring(1).split("&");
+        let token = params[0].split("=");
+        $.ajax({
+            type: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + token[1]
+            },
+            url: 'http://localhost:8081/hello',
+            success: function(data) {
+                $('#result').html(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>
