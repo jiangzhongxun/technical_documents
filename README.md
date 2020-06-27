@@ -19,3 +19,6 @@ client-app: 第三方应用	host:`8082`
 `授权码模式`,`简化模式`,`密码模式`,`客户端模式`
 
 与本案例相关的案例文档：https://mp.weixin.qq.com/s/8Z8vYBkDtwYIeKgQ_d6WHA
+
+### 4. Greedy-Snake 是一个使用Java实现的贪吃蛇小游戏 demo
+本案例参考自哔哩哔哩up主 [狂神说Java],视频地址：https://www.bilibili.com/video/BV1HE41127CV
