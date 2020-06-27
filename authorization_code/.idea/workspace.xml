@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b15c181-bd87-4955-b6a8-e4fd235a8c95" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/auth-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/org/javaboy/authserver/config/AccessTokenConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/org/javaboy/authserver/config/AccessTokenConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/org/javaboy/authserver/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/org/javaboy/authserver/config/AuthorizationServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/org/javaboy/authserver/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/org/javaboy/authserver/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/test/java/org/javaboy/authserver/AuthServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/test/java/org/javaboy/authserver/AuthServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client-app/src/test/java/org/javaboy/clientapp/ClientAppApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client-app/src/test/java/org/javaboy/clientapp/ClientAppApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-server/src/main/java/org/javaboy/userserver/config/ResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-server/src/main/java/org/javaboy/userserver/config/ResourceServerConfig.java" afterDir="false" />
-    </list>
+    <list default="true" id="7b15c181-bd87-4955-b6a8-e4fd235a8c95" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,11 +141,6 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
@@ -176,7 +162,7 @@
       <updated>1593136180798</updated>
       <workItem from="1593136184428" duration="9168000" />
       <workItem from="1593149599260" duration="182000" />
-      <workItem from="1593150103448" duration="7046000" />
+      <workItem from="1593150103448" duration="7289000" />
     </task>
     <servers />
   </component>
@@ -196,38 +182,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="297" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593156829411" />
-    <state width="1180" height="316" key="GridCell.Tab.0.bottom" timestamp="1593156856032">
+    <state width="1180" height="457" key="GridCell.Tab.0.bottom" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593156856032" />
-    <state width="1180" height="316" key="GridCell.Tab.0.center" timestamp="1593156856032">
+    <state width="1180" height="457" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.0.center" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593156856032" />
-    <state width="1180" height="316" key="GridCell.Tab.0.left" timestamp="1593156856032">
+    <state width="1180" height="457" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.0.left" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593156856032" />
-    <state width="1180" height="316" key="GridCell.Tab.0.right" timestamp="1593156856032">
+    <state width="1180" height="457" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.0.right" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593156856032" />
-    <state width="1180" height="316" key="GridCell.Tab.1.bottom" timestamp="1593156856033">
+    <state width="1180" height="457" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.1.bottom" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593156856033" />
-    <state width="1180" height="316" key="GridCell.Tab.1.center" timestamp="1593156856032">
+    <state width="1180" height="457" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.1.center" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593156856032" />
-    <state width="1180" height="316" key="GridCell.Tab.1.left" timestamp="1593156856032">
+    <state width="1180" height="457" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.1.left" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593156856032" />
-    <state width="1180" height="316" key="GridCell.Tab.1.right" timestamp="1593156856033">
+    <state width="1180" height="457" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
+    <state width="1180" height="457" key="GridCell.Tab.1.right" timestamp="1593157425467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1180" height="316" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593156856033" />
+    <state width="1180" height="457" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593157425467" />
     <state x="270" y="54" key="SettingsEditor" timestamp="1593137706193">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
