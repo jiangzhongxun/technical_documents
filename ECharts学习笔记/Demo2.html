@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts 图案例2</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小的 DOM -->
+<div id="main" style="width: 600px;height: 400px;"></div>
+<script type="text/javascript">
+    // 配置 ECharts 的基本信息
+    let option = {
+        // 为图表配置标题
+        title: {
+            text: '第二个ECharts案例'
+        },
+        // 配置提示信息
+        tooltip: {},
+        // 图例组件
+        legend: {
+            data: [{
+                name: '系列1',
+                // 强制设置图形为圆
+                icon: 'circle',
+                // 设置文本为红色
+                textStyle: {
+                    color: 'green'
+                }
+            }]
+        },
+        // 配置要在 X 轴显示的内容
+        xAxis: {
+            data: ['vivo', 'oppo', '小米', '三星', '华为', '苹果']
+        },
+        // 配置要在 Y 轴显示的内容
+        yAxis: {},
+        // 系列列表：每个系列通过 type 决定自己的图表类型
+        series: [{
+            name: '人气', // 系列名称
+            // 系列图表类型
+            type: 'bar',    // 柱状/条形图
+            // type: 'line',   // 折线/面积图
+            // type: 'pie',    // 饼图
+            // type: 'scatter',   // 散点（气泡）图
+            // type: 'effectScatter',   // 带有涟漪特效动画的散点（气泡）
+            // type: 'radar',   // 雷达图
+            // type: 'tree',   // 树型图
+            // type: 'gauge',   // 仪表盘
+            data: [35478, 25000, 5641, 45613, 116548, 88484] // 系列中的数据内容
+        }]
+    };
+    echarts.init(document.getElementById('main')).setOption(option);
+</script>
+</body>
+</html>

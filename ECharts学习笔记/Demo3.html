@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts 图案例3</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.min.js"></script>
+    <!-- 引入主题 -->
+    <script src="js/chalk.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小的 DOM -->
+<div id="main" style="width: 600px;height: 400px;"></div>
+<script type="text/javascript">
+    // 配置 ECharts 的基本信息
+    let option = {
+        title: {
+            text: '第3个ECharts案例'
+        },
+        series: [{
+            name: '天气变化', // 系列名称
+            type: 'pie', //设置图表类型为饼图
+            radius: '55%', // 饼图的半径，外半径为可视区尺寸(容器高宽中较小的一项)的55%长度
+            roseType: 'angle',
+            // itemStyle 参数可以设置诸如阴影、透明度、颜色、边框颜色、边框宽度等
+            itemStyle: {
+                normal: {
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+            // 高亮样式
+            emphasis: {
+                itemStyle: {
+                    color: 'green'
+                },
+                label: {
+                    show: true,
+                    // 高亮时标签的文字
+                    formatter: '温度'
+                }
+            },
+            data: [
+                {value: '30', name: '上海天气'},
+                {value: '29', name: '苏州天气'},
+                {value: '31', name: '杭州天气'},
+                {value: '33', name: '北京天气'},
+                {value: '30', name: '浙江天气'}
+            ] // 系列中的数据内容
+        }]
+    };
+    // 可以通过设置 light、dark 改变 ECharts 的默认主题
+    // 可以通过外部引用方式更换下载的 ECharts 官网的主题
+    // ECharts 的主题下载地址: https://echarts.apache.org/zh/theme-builder.html
+    echarts.init(document.getElementById('main'), 'chalk').setOption(option);
+</script>
+</body>
+</html>

@@ -22,3 +22,7 @@ client-app: 第三方应用	host:`8082`
 
 ### 4. Greedy-Snake 是一个使用Java实现的贪吃蛇小游戏 demo
 本案例参考自哔哩哔哩up主 [狂神说Java],视频地址：https://www.bilibili.com/video/BV1HE41127CV
+
+### 5. TypeScript 学习笔记
+### 6. ECharts 学习笔记
+通过 ECharts 工具库可以直接构建常用的柱状图、饼状图等等图标。
