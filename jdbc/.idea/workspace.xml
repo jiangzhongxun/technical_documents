@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13258ace-c926-4959-bd5a-fbedf4b0e880" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/jdbc/test/JDBCTestDelete.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdbc/test/JDBCTestInsert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdbc/test/JDBCTestSelect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdbc/test/JDBCTestUpdate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdbc/test/util/JDBCUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db.properties" afterDir="false" />
-    </list>
+    <list default="true" id="13258ace-c926-4959-bd5a-fbedf4b0e880" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +35,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -56,72 +50,7 @@
       <recent name="F:\IDEA工作空间\jdbc\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.JDBCTestSelect">
-    <configuration name="JDBCTestDelete" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdbc.test.JDBCTestDelete" />
-      <module name="jdbc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdbc.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCTestDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdbc.test.JDBCTestDemo" />
-      <module name="jdbc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdbc.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCTestInsert" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdbc.test.JDBCTestInsert" />
-      <module name="jdbc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdbc.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCTestSelect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdbc.test.JDBCTestSelect" />
-      <module name="jdbc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdbc.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCTestUpdate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdbc.test.JDBCTestUpdate" />
-      <module name="jdbc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdbc.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -135,15 +64,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.JDBCTestSelect" />
-        <item itemvalue="Application.JDBCTestDelete" />
-        <item itemvalue="Application.JDBCTestUpdate" />
-        <item itemvalue="Application.JDBCTestInsert" />
-        <item itemvalue="Application.JDBCTestDemo" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -157,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600694421772</updated>
       <workItem from="1600694422895" duration="1459000" />
-      <workItem from="1600777700588" duration="2218000" />
+      <workItem from="1600777700588" duration="4418000" />
     </task>
     <servers />
   </component>
@@ -165,25 +85,37 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="228" key="GridCell.Tab.0.bottom" timestamp="1600779369349">
+    <state x="285" y="74" width="1089" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600782923502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="228" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600779369349" />
-    <state width="1493" height="228" key="GridCell.Tab.0.center" timestamp="1600779369349">
+    <state x="285" y="74" width="1089" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1600782923502" />
+    <state width="1493" height="228" key="GridCell.Tab.0.bottom" timestamp="1600782926291">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="228" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600779369349" />
-    <state width="1493" height="228" key="GridCell.Tab.0.left" timestamp="1600779369349">
+    <state width="1493" height="228" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600782926291" />
+    <state width="1493" height="228" key="GridCell.Tab.0.center" timestamp="1600782926291">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="228" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600779369349" />
-    <state width="1493" height="228" key="GridCell.Tab.0.right" timestamp="1600779369349">
+    <state width="1493" height="228" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600782926291" />
+    <state width="1493" height="228" key="GridCell.Tab.0.left" timestamp="1600782926291">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="228" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600779369349" />
+    <state width="1493" height="228" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600782926291" />
+    <state width="1493" height="228" key="GridCell.Tab.0.right" timestamp="1600782926291">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600782926291" />
     <state x="270" y="56" key="SettingsEditor" timestamp="1600777724594">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600777724594" />
+    <state x="638" y="286" width="334" height="254" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1600782243186">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="638" y="286" width="334" height="254" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.824@0.0.1536.824" timestamp="1600782243186" />
+    <state x="499" y="217" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1600782200257">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="217" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1536.824@0.0.1536.824" timestamp="1600782200257" />
   </component>
 </project>
