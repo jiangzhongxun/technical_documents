@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>servlet-01</artifactId>
+    <artifactId>servlet-03</artifactId>
     <packaging>war</packaging>
 
     <properties>
@@ -28,7 +28,7 @@
     </dependencies>
 
     <build>
-        <finalName>servlet-01</finalName>
+        <finalName>servlet-03</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

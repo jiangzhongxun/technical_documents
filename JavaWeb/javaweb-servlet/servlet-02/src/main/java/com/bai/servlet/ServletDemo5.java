@@ -1,30 +1,26 @@
-- web.xml 头部
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"
-         metadata-complete="true">
-</web-app>
-```
+package com.bai.servlet;
 
-- Servlet 的 doGet、doPost 方法
-```java
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * @author: 南独酌酒 <211425401@126.com>
  * @date: 2020/10/2 17:11
  */
-public class ServletDemo4 extends HttpServlet {
+public class ServletDemo5 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        InputStream is = this.getServletContext().getResourceAsStream("/WEB-INF/classes/db.properties");
+        Properties prop = new Properties();
+        prop.load(is);
+        String username = prop.getProperty("username");
+        String password = prop.getProperty("password");
+        resp.getWriter().print(username + ":" + password);
     }
 
     @Override
@@ -32,4 +28,3 @@ public class ServletDemo4 extends HttpServlet {
         doGet(req, resp);
     }
 }
-```

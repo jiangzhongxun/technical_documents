@@ -5,6 +5,11 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0"
          metadata-complete="true">
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/mybatis</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>helloServlet</servlet-name>
         <servlet-class>com.bai.servlet.HelloServlet</servlet-class>
@@ -21,5 +26,50 @@
     <servlet-mapping>
         <servlet-name>getServlet</servlet-name>
         <url-pattern>/getUsername</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>sd3</servlet-name>
+        <servlet-class>com.bai.servlet.ServletDemo3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sd3</servlet-name>
+        <url-pattern>/sd3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>sd4</servlet-name>
+        <servlet-class>com.bai.servlet.ServletDemo4</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sd4</servlet-name>
+        <url-pattern>/sd4</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>sd5</servlet-name>
+        <servlet-class>com.bai.servlet.ServletDemo5</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sd5</servlet-name>
+        <url-pattern>/sd5</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>down</servlet-name>
+        <servlet-class>com.bai.servlet.FileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>down</servlet-name>
+        <url-pattern>/down</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>imageServlet</servlet-name>
+        <servlet-class>com.bai.servlet.ImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>imageServlet</servlet-name>
+        <url-pattern>/imageServlet</url-pattern>
     </servlet-mapping>
 </web-app>
