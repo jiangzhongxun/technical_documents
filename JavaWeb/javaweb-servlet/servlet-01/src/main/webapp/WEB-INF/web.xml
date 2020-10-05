@@ -17,12 +17,12 @@
 
 
     <!-- 配置 404 的映射 -->
-    <servlet>
+    <!--<servlet>
         <servlet-name>error</servlet-name>
         <servlet-class>com.bai.servlet.ErrorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 </web-app>
