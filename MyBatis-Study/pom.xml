@@ -48,23 +48,17 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <!-- 支持 properties 在 resources 包中存在 -->
                     <include>**/*.properties</include>
-                    <!-- 支持 xml 文件在 resources 包中存在 -->
                     <include>**/*.xml</include>
                 </includes>
-                <!-- 是否过滤 : 是 -->
                 <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <!-- 支持 properties 在 java 包中存在 -->
                     <include>**/*.properties</include>
-                    <!-- 支持 xml 文件在 java 包中存在 -->
                     <include>**/*.xml</include>
                 </includes>
-                <!-- 是否过滤 : 是 -->
                 <filtering>true</filtering>
             </resource>
         </resources>

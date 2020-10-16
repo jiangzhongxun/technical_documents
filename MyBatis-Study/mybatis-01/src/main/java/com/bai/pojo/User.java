@@ -1,6 +1,8 @@
 package com.bai.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -9,6 +11,8 @@ import java.io.Serializable;
  * @date: 2020/10/15 21:54
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
     private Integer id;
     private String name;

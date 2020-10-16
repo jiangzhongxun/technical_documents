@@ -16,4 +16,37 @@ public interface UserMapper {
      * @return 用户信息
      */
     public List<User> getUserList();
+
+    /**
+     * 跟据 id 查询用户信息
+     *
+     * @param id 查询条件
+     * @return 用户信息
+     */
+    public User getUserById(int id);
+
+    /**
+     * 添加用户
+     *
+     * @param user 添加信息
+     * @return 影响行数
+     */
+    public int addUser(User user);
+
+    /**
+     * 更新用户
+     *
+     * @param user 修改信心
+     * @return 影响行数
+     */
+    public int updateUser(User user);
+
+    /**
+     * 删除用户
+     *
+     * @param id 删除条件
+     * @return 影响行数
+     */
+    public int deleteUser(int id);
+
 }

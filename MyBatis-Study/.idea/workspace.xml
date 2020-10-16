@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abcd08c6-460c-479e-abdc-fbdd79e4958f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mybatis-01/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/pojo/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/util/MyBatisUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis-01/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis-01/src/test/java/com/dao/UserMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/src/test/java/com/dao/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/test/java/com/dao/UserMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/pojo/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/pojo/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/util/MyBatisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/util/MyBatisUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/target/test-classes/com/dao/UserMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/test-classes/com/dao/UserMapperTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +31,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/mybatis-01/src/test/java/com/dao/UserMapperTest.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -51,25 +57,27 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/ProjectDocuments/SpringBoot-Vhr" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserMapperTest.deleteUser">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.addUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis-01" />
       <extension name="coverage">
         <pattern>
@@ -79,7 +87,71 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.dao" />
       <option name="MAIN_CLASS_NAME" value="com.dao.UserMapperTest" />
-      <option name="METHOD_NAME" value="test01" />
+      <option name="METHOD_NAME" value="addUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.deleteUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.dao.UserMapperTest" />
+      <option name="METHOD_NAME" value="deleteUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.getUserById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.dao.UserMapperTest" />
+      <option name="METHOD_NAME" value="getUserById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.getUserList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.dao.UserMapperTest" />
+      <option name="METHOD_NAME" value="getUserList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.updateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.dao.UserMapperTest" />
+      <option name="METHOD_NAME" value="updateUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,7 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserMapperTest.test01" />
+        <item itemvalue="JUnit.UserMapperTest.deleteUser" />
+        <item itemvalue="JUnit.UserMapperTest.updateUser" />
+        <item itemvalue="JUnit.UserMapperTest.addUser" />
+        <item itemvalue="JUnit.UserMapperTest.getUserById" />
+        <item itemvalue="JUnit.UserMapperTest.getUserList" />
       </list>
     </recent_temporary>
   </component>
@@ -103,6 +179,11 @@
       <option name="presentableId" value="Default" />
       <updated>1602769442925</updated>
       <workItem from="1602769444631" duration="2500000" />
+      <workItem from="1602857903592" duration="293000" />
+      <workItem from="1602858362780" duration="58000" />
+      <workItem from="1602858461188" duration="1884000" />
+      <workItem from="1602860798893" duration="954000" />
+      <workItem from="1602861767755" duration="972000" />
     </task>
     <servers />
   </component>
@@ -114,41 +195,49 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1602770418653" />
-    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602770494373">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602860526402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602770494373" />
-    <state x="513" y="166" key="FileChooserDialogImpl" timestamp="1602769692058">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602860526402" />
+    <state x="513" y="166" key="FileChooserDialogImpl" timestamp="1602858542167">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="513" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602769692058" />
-    <state width="1493" height="305" key="GridCell.Tab.0.bottom" timestamp="1602771971747">
+    <state x="513" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602858542167" />
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1602863486325">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="305" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602771971747" />
-    <state width="1493" height="305" key="GridCell.Tab.0.center" timestamp="1602771971747">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1602863486325">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="305" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602771971747" />
-    <state width="1493" height="305" key="GridCell.Tab.0.left" timestamp="1602771971747">
+    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1602863486325">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="305" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602771971747" />
-    <state width="1493" height="305" key="GridCell.Tab.0.right" timestamp="1602771971747">
+    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1602863486325">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="305" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602771971747" />
-    <state x="198" y="56" width="1068" height="711" key="SettingsEditor" timestamp="1602769696095">
+    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
+    <state width="289" height="477" key="HiddenNamespacesPopup" timestamp="1602860556283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="198" y="56" width="1068" height="711" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602769696095" />
+    <state width="289" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1602860556283" />
+    <state x="198" y="56" width="1068" height="711" key="SettingsEditor" timestamp="1602861147362">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="198" y="56" width="1068" height="711" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602861147362" />
+    <state x="499" y="217" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1602860570024">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="217" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1536.824@0.0.1536.824" timestamp="1602860570024" />
     <state x="178" y="72" key="new project wizard" timestamp="1602769944357">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="72" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1602769944357" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602770906956">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602861355825">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602770906956" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602861355825" />
   </component>
 </project>
