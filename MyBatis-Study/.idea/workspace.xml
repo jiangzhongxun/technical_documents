@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abcd08c6-460c-479e-abdc-fbdd79e4958f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-01/src/main/resources/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/dao/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/java/com/bai/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-01/src/test/java/com/dao/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/test/java/com/dao/UserMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/src/main/resources/mybatis-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/dao/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/pojo/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/pojo/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/util/MyBatisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/com/bai/util/MyBatisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-01/target/test-classes/com/dao/UserMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/test-classes/com/dao/UserMapperTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-01/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-01/target/classes/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,20 +60,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
-  <component name="RunManager" selected="JUnit.UserMapperTest.deleteUser">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.UserMapperTest.getUserList">
     <configuration name="UserMapperTest.addUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis-01" />
       <extension name="coverage">
@@ -159,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserMapperTest.getUserList" />
         <item itemvalue="JUnit.UserMapperTest.deleteUser" />
         <item itemvalue="JUnit.UserMapperTest.updateUser" />
         <item itemvalue="JUnit.UserMapperTest.addUser" />
         <item itemvalue="JUnit.UserMapperTest.getUserById" />
-        <item itemvalue="JUnit.UserMapperTest.getUserList" />
       </list>
     </recent_temporary>
   </component>
@@ -184,6 +168,8 @@
       <workItem from="1602858461188" duration="1884000" />
       <workItem from="1602860798893" duration="954000" />
       <workItem from="1602861767755" duration="972000" />
+      <workItem from="1602904518344" duration="2613000" />
+      <workItem from="1602907138178" duration="4000" />
     </task>
     <servers />
   </component>
@@ -203,22 +189,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="513" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602858542167" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1602863486325">
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1602907135673">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1602863486325">
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1602907135673">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1602863486325">
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1602907135673">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1602863486325">
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1602907135673">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602863486325" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1602907135674">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602907135674" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1602907135673">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1602907135673">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1602907135673">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602907135673" />
     <state width="289" height="477" key="HiddenNamespacesPopup" timestamp="1602860556283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

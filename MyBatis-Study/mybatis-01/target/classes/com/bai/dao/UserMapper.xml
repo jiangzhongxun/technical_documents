@@ -5,7 +5,7 @@
 <mapper namespace="com.bai.dao.UserMapper">
 
     <!-- 查询所有用户信息 -->
-    <select id="getUserList" resultType="com.bai.pojo.User">
+    <select id="getUserList" resultType="hello">
         select * from mybatis.user;
     </select>
 
