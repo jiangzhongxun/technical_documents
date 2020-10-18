@@ -455,7 +455,7 @@ MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性
 
 ![image-20201017112350557](MyBatis文档.assets/image-20201017112350557.png)
 
-### properties
+## properties
 
 1. 在外部 resource 文件下创建 db.properties 数据库连接文件
 
@@ -517,7 +517,7 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 
 当二者同时配置了相同的信息，优先读取外部的 db.properties 文件
 
-### typeAliases 类型别名
+## typeAliases 类型别名
 
 - 类型别名可为 Java 类型设置一个缩写名字
 - 意在降低冗余的全限定类名书写
@@ -579,7 +579,7 @@ resultType 直接使用 @Alias 注解中声明的名称即可
     </select>
 ```
 
-### 映射器 mappers
+## 映射器 mappers
 
 方式一：通过 resource 方式配置
 
@@ -611,7 +611,7 @@ resultType 直接使用 @Alias 注解中声明的名称即可
 
 ![image-20201017114400578](MyBatis文档.assets/image-20201017114400578.png)
 
-### environments 环境配置
+## environments 环境配置
 
 可以通过此配置指定多种环境的数据库连接配置
 
@@ -665,3 +665,83 @@ resultType 直接使用 @Alias 注解中声明的名称即可
 - 数据源 dataSource
 
   UNPOOLED、POOLED、JNDI
+  
+# 日志
+
+## stdout_logging
+
+在 MyBatis 核心核心配置文件中添加配置
+
+  ```xml
+  	<!-- 基本设置 -->
+      <settings>
+          <!-- STDOUT_LOGGING 日志实现 -->
+          <setting name="logImpl" value="STDOUT_LOGGING"/>
+      </settings>
+  ```
+
+  ![image-20201018175345811](MyBatis文档.assets/image-20201018175345811.png)
+
+ 
+
+## log4j
+
+### log4j 简介
+
+- Log4j是[Apache](https://baike.baidu.com/item/Apache/8512995)的一个开源项目，通过使用Log4j，我们可以控制日志信息输送的目的地是[控制台](https://baike.baidu.com/item/控制台/2438626)、文件、[GUI](https://baike.baidu.com/item/GUI)组件
+- 可以控制每一条日志的输出格式；通过定义每一条日志信息的级别
+- 可以通过一个[配置文件](https://baike.baidu.com/item/配置文件/286550)来灵活地进行配置，而不需要修改应用的代码
+
+### 如何在项目中使用 log4j
+
+1. 引入 Maven 依赖
+
+   ```xml
+   <dependency>
+       <groupId>log4j</groupId>
+       <artifactId>log4j</artifactId>
+       <version>1.2.17</version>
+   </dependency>
+   ```
+
+2. 创建 log4j.properties 文件
+
+   ```properties
+   # 将等级为DEBUG的日志信息输出到console和file这两个目的地,console和file的定义在下面的代码
+   log4j.rootLogger=DEBUG,console,file
+   
+   # 控制台输出的相关配置
+   log4j.appender.console=org.apache.log4j.ConsoleAppender
+   log4j.appender.console.Target=System.out
+   log4j.appender.console.Threshold=DEBUG
+   log4j.appender.console.layout=org.apache.log4j.PatternLayout
+   log4j.appender.console.layout.ConversionPattern=[%c]-%m%n
+   
+   # 文件输出的相关配置
+   log4j.appender.file=org.apache.log4j.RollingFileAppender
+   log4j.appender.file.File=./log/bai.log
+   log4j.appender.file.MaxFileSize=10MB
+   log4j.appender.file.Threshold=DEBUG
+   log4j.appender.file.layout=org.apache.log4j.PatternLayout
+   log4j.appender.file.layout.ConversionPattern=[%p][%d{yyyy-MM-dd HH:mm:ss}][%c]-%m%n
+   
+   # 日志输出级别
+   log4j.logger.org.mybatis=DEBUG
+   log4j.logger.java.sql=DEBUG
+   log4j.logger.java.sql.Statement=DEBUG
+   log4j.logger.java.sql.ResultSet=DEBUG
+   log4j.logger.java.sql.PreparedStatement=DEBUG
+   ```
+
+3. 修改 MyBatis 核心配置文件，配置日志选项
+
+   ```xml
+   <!-- 基本设置 -->
+       <settings>
+           <setting name="logImpl" value="LOG4J"/>
+       </settings>
+   ```
+
+4. 测试
+
+   当前项目根目录下会生成一个 /log 文件夹，文件夹中的内容就是刚才输出的日志。
