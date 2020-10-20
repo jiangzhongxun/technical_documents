@@ -1,8 +1,9 @@
-package com.bai.dao;
+package com.bai;
 
 import com.bai.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: 南独酌酒 <211425401@126.com>
@@ -49,4 +50,18 @@ public interface UserMapper {
      */
     public int deleteUser(int id);
 
+    /**
+     * limit 分页实现查询用户信息
+     *
+     * @param map 条件
+     * @return 用户信息
+     */
+    public List<User> getUserLimit(Map<String, Integer> map);
+
+    /**
+     * 使用 RowBounds 方式实现分页
+     *
+     * @return 用户信息
+     */
+    public List<User> getUserRowBounds();
 }

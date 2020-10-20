@@ -745,3 +745,262 @@ resultType 直接使用 @Alias 注解中声明的名称即可
 4. 测试
 
    当前项目根目录下会生成一个 /log 文件夹，文件夹中的内容就是刚才输出的日志。
+
+# 分页
+
+## Limit 分页
+
+1. UserMapper
+
+   ```java
+   /**
+        * limit 分页实现查询用户信息
+        *
+        * @param map 条件
+        * @return 用户信息
+        */
+       public List<User> getUserLimit(Map<String, Integer> map);
+   ```
+
+2. UserMapper.xml
+
+   ```xml
+    <!-- limit 分页实现查询用户信息 -->
+       <select id="getUserLimit" parameterType="map" resultType="user">
+           select * from mybatis.user limit #{pageNo},#{pageSize}
+       </select>
+   ```
+
+   
+
+3. 测试
+
+   ```java
+    @Test
+       public void getUserLimit() {
+           // limit 分页实现
+           SqlSession sqlSession = MyBatisUtil.getSqlSession();
+   
+           UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+           Map<String, Integer> map = new HashMap<String, Integer>(2);
+           map.put("pageNo", 1);
+           map.put("pageSize", 2);
+           List<User> list = mapper.getUserLimit(map);
+           for (User user : list) {
+               System.out.println(user);
+           }
+   
+           sqlSession.close();
+       }
+   ```
+
+   
+
+## RowBounds 分页
+
+1. UserMapper
+
+   ```java
+   /**
+        * 使用 RowBounds 方式实现分页
+        *
+        * @return 用户信息
+        */
+       public List<User> getUserRowBounds();
+   ```
+
+   
+
+2. UserMapper.xml
+
+   ```xml
+   <!-- 使用 RowBounds 方式实现分页 -->
+       <select id="getUserRowBounds" resultType="user">
+           select * from mybatis.user
+       </select>
+   ```
+
+   
+
+3. 测试
+
+   ```java
+    @Test
+       public void getUserRowBounds() {
+           // 使用 RowBounds 方式实现分页
+           SqlSession sqlSession = MyBatisUtil.getSqlSession();
+   
+           RowBounds rowBounds = new RowBounds(2, 2);
+           List<User> list = sqlSession.selectList("com.bai.dao.UserMapper.getUserRowBounds", null, rowBounds);
+           for (User user : list) {
+               System.out.println(user);
+           }
+   
+           sqlSession.close();
+       }
+   ```
+
+## MyBatis PageHelper 分页插件
+
+文档：https://pagehelper.github.io/docs/howtouse/
+
+# 注解开发
+
+## @Select 注解
+
+1. 直接在 UserMapper 接口中使用 @Select 注解来编写 SQL 即可
+
+   ```java
+   /**
+        * 查询全部用户
+        *
+        * @return 用户信息
+        */
+       @Select("select * from user")
+       List<User> getUserList();
+   ```
+
+   
+
+2. 测试
+
+   ```java
+   @Test
+       public void getUserList() {
+           // 测试 @Select 注解
+           SqlSession sqlSession = MyBatisUtil.getSqlSession();
+   
+           UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+           List<User> list = mapper.getUsers();
+           for (User user : list) {
+               System.out.println(user);
+           }
+   
+           sqlSession.close();
+       }
+   ```
+
+   
+
+**注意：使用注解开发一定要在 mybatis 的核心配置文件中添加配置映射**
+
+```xml
+<!-- 配置映射 -->
+    <mappers>
+        <mapper class="com.bai.dao.UserMapper"/>
+    </mappers>
+```
+
+## @Param 注解
+
+1. 一般使用多个参数的话必须使用 @Param 注解传参
+2. 基本类型使用 @Param ，引用类型不需要使用此注解
+3. sql 语句获取其中的 @Param("value") Value 值来使用即可
+
+## 自动设置事务提交
+
+更改 MyBatisUtil 工具类
+
+通过 sqlSessionFactory.openSession(true); 的重载方法可以开启自动提交事务。
+
+```java
+	/**
+     * 通过 SqlSessionFactory 创建一个 SqlSession 对象
+     *
+     * @return SqlSession 对象
+     */
+    public static SqlSession getSqlSession() {
+        return sqlSessionFactory.openSession(true);
+    }
+```
+
+**开启了自动提交事务后，增删改就不需要手动提交事务了。**
+
+## @Insert 注解
+
+```java
+	/**
+     * 新增用户
+     *
+     * @param user 新增数据
+     */
+    @Insert("insert into user(id, name, pwd) values(#{id}, #{name}, #{pwd})")
+    void addUser(User user);
+
+
+	// 测试
+
+	@Test
+    public void addUser() {
+        // 测试 @Select 注解
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        mapper.addUser(new User(5, "Hello", "333"));
+
+        sqlSession.close();
+    }
+```
+
+
+
+## @Delete 注解
+
+```java
+	/**
+     * 更新用户信息
+     *
+     * @param user 更新数据
+     */
+    @Update("update user set name = #{name},pwd = #{pwd} where id = #{id}")
+    void updateUser(User user);
+
+
+	// 测试
+	@Test
+    public void updateUser() {
+        // 测试 @Select 注解
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        mapper.updateUser(new User(5, "魔教教主", "777"));
+
+        sqlSession.close();
+    }
+
+```
+
+
+
+## @Update 注解
+
+```java
+	/**
+     * 删除用户
+     *
+     * @param id 删除条件
+     */
+    @Delete("delete from user where id = #{uid}")
+    void deleteById(@Param("uid") int id);
+
+
+	// 测试
+	@Test
+    public void deleteById() {
+        // 测试 @Select 注解
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        mapper.deleteById(5);
+
+        sqlSession.close();
+    }
+```
+
+## #{} 和 ${} 的区别
+
+#{} 是预编译执行 sql 的
+
+${} 不是预编译
+
+#{} 能够有效防止 sql 注入，推荐使用 #{} 

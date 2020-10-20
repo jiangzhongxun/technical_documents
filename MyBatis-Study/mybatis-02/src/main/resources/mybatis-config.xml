@@ -9,13 +9,12 @@
     <!-- 基本设置 -->
     <settings>
         <!-- STDOUT_LOGGING 日志实现 -->
-        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
-        <setting name="logImpl" value="LOG4J"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
     <!-- 配置别名 -->
     <typeAliases>
-        <typeAlias type="com.bai.User" alias="user"/>
+        <typeAlias type="com.bai.pojo.User" alias="user"/>
     </typeAliases>
 
     <!-- 数据库运行环境 -->
@@ -33,6 +32,6 @@
 
     <!-- 配置映射 -->
     <mappers>
-        <mapper resource="com/bai/com.bai.dao/UserMapper.xml"/>
+        <mapper class="com.bai.dao.UserMapper"/>
     </mappers>
 </configuration>

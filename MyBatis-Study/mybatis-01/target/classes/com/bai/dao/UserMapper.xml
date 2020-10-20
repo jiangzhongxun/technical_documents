@@ -5,7 +5,7 @@
 <mapper namespace="com.bai.dao.UserMapper">
 
     <!-- 查询所有用户信息 -->
-    <select id="getUserList" resultType="hello">
+    <select id="getUserList" resultType="user">
         select * from mybatis.user;
     </select>
 
@@ -28,5 +28,15 @@
     <delete id="deleteUser" parameterType="int">
         delete from mybatis.user where id = #{id};
     </delete>
+
+    <!-- limit 分页实现查询用户信息 -->
+    <select id="getUserLimit" parameterType="map" resultType="user">
+        select * from mybatis.user limit #{pageNo},#{pageSize}
+    </select>
+
+    <!-- 使用 RowBounds 方式实现分页 -->
+    <select id="getUserRowBounds" resultType="user">
+        select * from mybatis.user
+    </select>
 
 </mapper>

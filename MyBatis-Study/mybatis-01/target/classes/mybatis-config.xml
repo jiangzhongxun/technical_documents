@@ -15,7 +15,7 @@
 
     <!-- 配置别名 -->
     <typeAliases>
-        <package name="com.bai.pojo"/>
+        <typeAlias type="com.bai.pojo.User" alias="user"/>
     </typeAliases>
 
     <!-- 数据库运行环境 -->
