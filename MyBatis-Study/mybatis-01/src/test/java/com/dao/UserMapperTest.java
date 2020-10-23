@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.bai.UserMapper;
+import com.bai.dao.UserMapper;
 import com.bai.pojo.User;
 import com.bai.util.MyBatisUtil;
 import org.apache.ibatis.session.RowBounds;

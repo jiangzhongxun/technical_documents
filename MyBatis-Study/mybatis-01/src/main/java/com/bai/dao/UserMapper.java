@@ -1,4 +1,4 @@
-package com.bai;
+package com.bai.dao;
 
 import com.bai.pojo.User;
 

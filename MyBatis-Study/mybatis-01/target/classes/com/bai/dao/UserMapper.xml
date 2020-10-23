@@ -10,17 +10,17 @@
     </select>
 
     <!-- 跟据 id 查询用户信息 -->
-    <select id="getUserById" resultType="com.bai.pojo.User" parameterType="int">
+    <select id="getUserById" resultType="com.bai.User" parameterType="int">
         select * from mybatis.user where id = #{id};
     </select>
 
     <!-- 添加用户 -->
-    <insert id="addUser" parameterType="com.bai.pojo.User">
+    <insert id="addUser" parameterType="com.bai.User">
         insert into mybatis.user (id, name, pwd) values (#{id}, #{name}, #{pwd});
     </insert>
 
     <!-- 更新用户 -->
-    <update id="updateUser" parameterType="com.bai.pojo.User">
+    <update id="updateUser" parameterType="com.bai.User">
         update mybatis.user set name=#{name}, pwd=#{pwd} where id = #{id};
     </update>
 

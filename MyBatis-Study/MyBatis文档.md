@@ -1004,3 +1004,74 @@ resultType 直接使用 @Alias 注解中声明的名称即可
 ${} 不是预编译
 
 #{} 能够有效防止 sql 注入，推荐使用 #{} 
+
+# Lombok 注解
+
+## 项目中使用 lombok
+
+1. IDEA 安装 Lombok 插件
+
+   ![image-20201023215737291](MyBatis文档.assets/image-20201023215737291.png)
+
+2. 项目中引入 Lombok 依赖即可使用
+
+   ```xml
+   <!-- lombok 依赖 -->
+           <dependency>
+               <groupId>org.projectlombok</groupId>
+               <artifactId>lombok</artifactId>
+               <version>1.18.12</version>
+           </dependency>
+   ```
+
+## lombok 常用注解
+
+```java
+@Getter and @Setter	// 给属性添加 getter 和 setter 方法
+@ToString	// 添加 toString() 方法
+@EqualsAndHashCode	// 在类中添加 equals() hashCode() 方法
+@AllArgsConstructor	// 在类中添加一个全参构造函数
+@NoArgsConstructor	// 在类中添加一个无参构造
+@Slf4j	// 日志
+@Data	// 类上面一般默认都是使用此注解 
+    // 添加了 @Data 注解，会在类中生成 getter/setter/toString()/hashCode() 和 无参构造等方法
+```
+
+# ResultMap 多对一实现
+
+```xml
+<select id="getStudents" resultMap="BaseStudentMap">
+        select s.id sid,s.name sname,t.name tname
+        from student s
+        left join teacher t on s.tid = t.id
+    </select>
+
+    <resultMap id="BaseStudentMap" type="com.bai.pojo.Student">
+        <id property="id" column="sid"/>
+        <result property="name" column="sname"/>
+        <association property="teacher" javaType="com.bai.pojo.Teacher">
+            <result property="name" column="tname"/>
+        </association>
+     </resultMap>
+```
+
+# ResultMap 一对多实现
+
+```xml
+<select id="getById" resultMap="BaseResultMap">
+        select s.id sid,s.name sname,t.id tid,t.name tname from student s
+        left join teacher t on s.tid = t.id
+    </select>
+
+    <resultMap id="BaseResultMap" type="com.bai.pojo.Teacher">
+        <id property="id" column="tid"/>
+        <result property="name" column="tname"/>
+        <collection property="studentList" ofType="com.bai.pojo.Student">
+            <result property="name" column="sname"/>
+        </collection>
+    </resultMap>
+```
+
+- association 单个对象下使用
+- collection 集合情况下使用
+- 其中一定要注意 property 属性填写的是实体类中创建的属性、而 column 是 sql 语句查询的列名称，如果给 sql 语句查询的字段起了别名，一定在使用别名
