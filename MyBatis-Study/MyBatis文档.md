@@ -1075,3 +1075,573 @@ ${} 不是预编译
 - association 单个对象下使用
 - collection 集合情况下使用
 - 其中一定要注意 property 属性填写的是实体类中创建的属性、而 column 是 sql 语句查询的列名称，如果给 sql 语句查询的字段起了别名，一定在使用别名
+
+# 动态 SQL
+
+## 环境搭建
+
+1. 创建测试数据库
+
+   ```sql
+   create table blog
+   (
+   	id varchar(30) not null comment '主键 id',
+   	title varchar(30) null comment '博客标题',
+   	author varchar(30) null comment '作者',
+   	create_time datetime null comment '创建时间',
+   	views int(10) null comment '博客浏览量',
+   	constraint blog_pk
+   		primary key (id)
+   )
+   comment '博客表';
+   ```
+
+2. 搭建工程
+
+   一个基本的工程搭建，复制之前 resources 目录下的配置文件，只需要修改其中 mappers  配置映射即可。
+
+3. 创建实体类 Blog
+
+   ```java
+   import lombok.Data;
+   
+   import java.util.Date;
+   
+   /**
+    * @author: 南独酌酒 <211425401@126.com>
+    * @date: 2020/10/24 10:20
+    */
+   @Data
+   public class Blog {
+       private String id;
+       private String title;
+       private String author;
+       //todo 由于这里配置的属性和数据库明显不一致,可以通过配置驼峰命名转换来达到我们想要的结果
+       private Date createTime;
+       private Integer views;
+   }
+   ```
+
+   
+
+4. 创建mybatis核心配置文件
+
+   由于我们的实体类 createTime 和数据库中定义的 create_time 不一样，可以通过此配置达到映射效果
+
+   ![image-20201024102418382](MyBatis文档.assets/image-20201024102418382.png)
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE configuration
+           PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+           "http://mybatis.org/dtd/mybatis-3-config.dtd">
+   <configuration>
+       <!-- 读取配置文件 -->
+       <properties resource="db.properties"/>
+   
+       <!-- 基本设置 -->
+       <settings>
+           <!-- STDOUT_LOGGING 日志实现 -->
+           <setting name="logImpl" value="STDOUT_LOGGING"/>
+           <!-- 是否开启驼峰命名自动映射 -->
+           <setting name="mapUnderscoreToCamelCase" value="true"/>
+       </settings>
+   
+       <!-- 数据库运行环境 -->
+       <environments default="development">
+           <environment id="development">
+               <transactionManager type="JDBC"/>
+               <dataSource type="POOLED">
+                   <property name="driver" value="${driver}"/>
+                   <property name="url" value="${url}"/>
+                   <property name="username" value="${username}"/>
+                   <property name="password" value="${password}"/>
+               </dataSource>
+           </environment>
+       </environments>
+   
+       <!-- 配置映射 -->
+       <mappers>
+           <mapper class="com.bai.dao.BlogMapper"/>
+       </mappers>
+   
+   </configuration>
+   ```
+
+5. 创建 BlogMapper 和 BlogMapper.xml 文件
+
+6. 创建 IdUtils 工具类，用来生成默认的 UUID 作为 blog 表的主键
+
+   ```java
+   import org.junit.Test;
+   
+   import java.util.UUID;
+   
+   /**
+    * @author: 南独酌酒 <211425401@126.com>
+    * @date: 2020/10/24 10:27
+    */
+   @SuppressWarnings("all")    // 镇压警告
+   public class IdUtils {
+       public static String getUUID() {
+           return UUID.randomUUID().toString().replace("-", "");
+       }
+   
+       @Test
+       public void test() {
+           System.out.println(IdUtils.getUUID());
+       }
+   }
+   ```
+
+7. 添加 blog 记录
+
+   ```java
+   /**
+        * 添加博客记录
+        *
+        * @param blog 博客
+        * @return 影响行数
+        */
+       public int saveBlog(Blog blog);
+   ```
+
+   ```xml
+   <!-- 添加博客记录 -->
+       <insert id="saveBlog" useGeneratedKeys="true" keyProperty="id">
+           insert into blog (id,title,author,create_time,views)
+           values (#{id},#{title},#{author},#{createTime},#{views})
+       </insert>
+   ```
+
+8. 测试
+
+   ```java
+   @Test
+       public void test01() {
+           SqlSession sqlSession = MyBatisUtil.getSqlSession();
+           BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+           Blog blog = new Blog();
+           blog.setId(IdUtils.getUUID());
+           blog.setTitle("MyBatis确实好用");
+           blog.setAuthor("南独酌酒");
+           blog.setCreateTime(new Date());
+           blog.setViews(5600);
+           mapper.saveBlog(blog);
+   
+           blog.setId(IdUtils.getUUID());
+           blog.setTitle("Spring确实好用");
+           mapper.saveBlog(blog);
+   
+           blog.setId(IdUtils.getUUID());
+           blog.setTitle("SpringBoot确实好用");
+           mapper.saveBlog(blog);
+   
+           blog.setId(IdUtils.getUUID());
+           blog.setTitle("SpringCloud确实好用");
+           mapper.saveBlog(blog);
+   
+           sqlSession.close();
+       }
+   ```
+
+   ![image-20201024103940336](MyBatis文档.assets/image-20201024103940336.png)
+
+## 动态 SQL 之 IF
+
+**在 xml 文件中通过 if 标签来达到动态拼接 sql 的目的**
+
+```java
+/**
+     * 跟据标题和作者姓名查询指定博客
+     *
+     * @param reqMap 查询条件
+     * @return 博客记录
+     */
+    public List<Blog> getAll(@Param("reqMap") Map<String, Object> reqMap);
+```
+
+```xml
+<!-- 跟据标题和作者姓名查询指定博客 -->
+    <select id="getAll" resultType="com.bai.pojo.Blog">
+        select * from blog where 1=1
+        <if test="reqMap.title != null">
+            and title = #{reqMap.title}
+        </if>
+        <if test="reqMap.author != null">
+            and author = #{reqMap.author}
+        </if>
+    </select>
+```
+
+测试
+
+```java
+@Test
+    public void test02() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        Map<String, Object> reqMap = new HashMap<String, Object>();
+        reqMap.put("title", "Mybatis确实好用");
+        List<Blog> blogs = mapper.getAll(reqMap);
+        for (Blog blog : blogs) {
+            System.out.println(blog);
+        }
+        sqlSession.close();
+    }
+```
+
+查询结果，控制台打印的 sql 语句真是拼接后的 sql
+
+![image-20201024105423170](MyBatis文档.assets/image-20201024105423170.png)
+
+## 动态 SQL 之 choose、when、otherwise
+
+**这个类似于 java 中的 switch 语句**
+
+choose 相当于 switch
+
+when 相当于 case
+
+otherwise 相当于 default
+
+```java
+ /**
+     * choose、when、otherwise 测试
+     *
+     * @param map 条件
+     * @return 记录
+     */
+    public List<Blog> queryChoose(Map<String, Object> map);
+```
+
+```xml
+<!-- choose、when、otherwise 测试 -->
+    <select id="queryChoose" parameterType="map" resultType="com.bai.pojo.Blog">
+        select * from blog
+        <where>
+            <choose>
+                <when test="title != null">
+                    title = #{title}
+                </when>
+                <when test="author != null">
+                    author = #{author}
+                </when>
+                <otherwise>
+                    views = #{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+```
+
+测试
+
+```java
+@Test
+    public void test03() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        Map<String, Object> map = new HashMap<String, Object>();
+//        map.put("title", "Mybatis确实好用");
+//        map.put("author", "南独酌酒");
+        map.put("views", "5600");
+        List<Blog> blogs = mapper.queryChoose(map);
+        for (Blog blog : blogs) {
+            System.out.println(blog);
+        }
+        sqlSession.close();
+    }
+```
+
+## 动态 SQL 之 trim、where、set
+
+1. where
+
+   ***where* 元素只会在子元素返回任何内容的情况下才插入 “WHERE” 子句。而且，若子句的开头为 “AND” 或 “OR”，*where* 元素也会将它们去除。**
+
+2. set
+
+   *set* 元素可以用于动态包含需要更新的列，忽略其它不更新的列
+
+   *set* 标签一般都用于在 update 语句上
+
+   *set* 元素会动态地在行首插入 SET 关键字，并会删掉额外的逗号
+
+   ```java
+   /**
+        * 更新博客信息
+        *
+        * @param blog 博客信息
+        * @return 影响行数
+        */
+       public int updateBlog(Blog blog);
+   ```
+
+   ```xml
+   <!-- 更新博客信息 -->
+       <update id="updateBlog" parameterType="com.bai.pojo.Blog">
+           update blog
+           <set>
+               <if test="title != null">title = #{title},</if>
+               <if test="author != null">author = #{author},</if>
+           </set>
+           where id = #{id}
+       </update>
+   ```
+
+   测试
+
+   ```java
+    @Test
+       public void test04() {
+           SqlSession sqlSession = MyBatisUtil.getSqlSession();
+           BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+           Blog blog = new Blog();
+           blog.setId("4c067d7a925e4bd3a972e802b59e5198");
+           blog.setTitle("SpringBoot确实好用");
+           mapper.updateBlog(blog);
+           sqlSession.close();
+       }
+   ```
+
+   结果
+
+   ![image-20201024113936920](MyBatis文档.assets/image-20201024113936920.png)
+
+3. trim
+
+   trim 类似于自定义一些花样来拼接 sql 语句
+
+   - prefix 后缀
+
+   - prefixOverrides 后缀重写
+
+   - suffix 前缀
+
+   - suffix 前缀重写
+
+   ```xml
+   <trim prefix="" prefixOverrides="" suffix="" suffixOverrides="">
+   </trim>
+   ```
+
+   常见例子：前缀设置 where ，在有 and 或者 or 的情况下拼接 sql
+
+   ```xml
+   <trim prefix="WHERE" prefixOverrides="AND |OR ">
+     ...
+   </trim>
+   ```
+
+   后缀设置 set，后缀重写以逗号结尾
+
+   ```xml
+   <trim prefix="SET" suffixOverrides=",">
+     ...
+   </trim>
+   ```
+
+## 动态 SQL 之 foreach
+
+测试之前首先将 blog 表中的主键 改为 1234 等等，方便测试 
+
+```java
+/**
+     * 测试 foreach
+     *
+     * @param ids 条件
+     * @return 博客数据
+     */
+    public List<Blog> queryForeach(@Param("ids") List<Integer> ids);
+```
+
+```xml
+ <!--
+    测试 foreach
+    select * from blog where id in (1,2,3)
+     -->
+    <select id="queryForeach" resultType="com.bai.pojo.Blog">
+        select * from blog
+        <where>
+            id in
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+```
+
+测试
+
+```java
+@Test
+    public void test05() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        List<Blog> blogs = mapper.queryForeach(list);
+        for (Blog blog : blogs) {
+            System.out.println(blog);
+        }
+        sqlSession.close();
+    }
+```
+
+结果
+
+![image-20201024120848470](MyBatis文档.assets/image-20201024120848470.png)
+
+# SQL 片段
+
+sql 片段是用来编写重复使用的代码
+
+```xml
+<sql id="if-title-author">
+        <if test="reqMap.title != null">
+            and title = #{reqMap.title}
+        </if>
+        <if test="reqMap.author != null">
+            and author = #{reqMap.author}
+        </if>
+    </sql>
+
+    <!-- 跟据标题和作者姓名查询指定博客 -->
+    <select id="getAll" resultType="com.bai.pojo.Blog">
+        select * from blog
+        <where>
+            <include refid="if-title-author"/>
+        </where>
+    </select>
+```
+
+通过定义 sql 标签在其中写入经常服用的代码即可
+
+通过 include 标签来引用  sql 片段即可
+
+# MyBatis 缓存
+
+- mybatis 默认开启一级缓存，一级缓存作用域只限定于 sqlSession 的一次会话
+- mybatis 二级缓存需要自定义开启，作用域是基于 namespace 
+
+## 一级缓存测试
+
+```java
+  /**
+     * 跟据id查询用户
+     *
+     * @param id 查询条件
+     * @return 用户信息
+     */
+    public User getById(@Param("id") int id);
+```
+
+```xml
+<!-- 跟据id查询用户 -->
+    <select id="getById" resultType="com.bai.pojo.User">
+        select * from user where id = #{id};
+    </select>
+```
+
+开始测试
+
+```java
+@Test
+    public void test01() {
+        // 测试一级缓存
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        // 一级缓存的作用域只限定于 sqlSession 一次会话中有效
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        System.err.println("================第一次查询 user==================");
+        User user = mapper.getById(1);
+        System.err.println(user);
+
+        System.err.println("================第二次查询 user==================");
+        User user2 = mapper.getById(1);
+        System.err.println(user2);
+
+        sqlSession.close();
+    }
+```
+
+测试结果
+
+![image-20201024125018988](MyBatis文档.assets/image-20201024125018988.png)
+
+一级缓存失效的问题：
+
+- 查询的不是同一次数据，就不会有缓存一说
+
+- 增删改都会刷新缓存，缓存就会被清除
+
+- 手动设置缓存失效，通过 `sqlSession.clearCache();` 实现清除缓存
+
+  ![image-20201024125357870](MyBatis文档.assets/image-20201024125357870.png)
+
+## 二级缓存测试
+
+1. mybatis 核心配置文件配置开启全局二级缓存
+
+   ```xml
+   <!-- 显示的开启二级缓存 -->
+   <setting name="cacheEnabled" value="true"/>
+   ```
+
+2. 在想要使用二级缓存的 Mapper.xml 文件中创建 cache 标签即可开启二级缓存
+
+   ```xml
+   <!-- 开启二级缓存 -->
+   <cache/>
+   ```
+
+   也可以自定义设置一些常用参数
+
+   ```xml
+    <!-- 开启二级缓存 -->
+   <cache eviction="FIFO"
+          flushInterval="60000"
+          size="512"
+          readOnly="true"/>
+   ```
+
+   **eviction 缓存清除策略**
+
+   1. `LRU` – 最近最少使用：移除最长时间不被使用的对象。
+   2. `FIFO` – 先进先出：按对象进入缓存的顺序来移除它们。
+   3. `SOFT` – 软引用：基于垃圾回收器状态和软引用规则移除对象。
+   4. `WEAK` – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象
+
+   **flushInterval 刷新间隔**
+
+   **size 引用数目**
+
+   **readOnly 只读属性**
+
+   **二级缓存是事务性的。这意味着，当 SqlSession 完成并提交时，或是完成并回滚，但没有执行 flushCache=true 的 insert/delete/update 语句时，缓存会获得更新**
+
+3. 测试
+
+   ```java
+   	@Test
+       public void test02() {
+           // 测试二级缓存
+           SqlSession sqlSession = MyBatisUtil.getSqlSession();
+           UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+           User user = mapper.getById(1);
+           System.out.println(user);
+           sqlSession.close();
+   
+           SqlSession sqlSession2 = MyBatisUtil.getSqlSession();
+           UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+           User user2 = mapper2.getById(1);
+           System.out.println(user2);
+           sqlSession2.close();
+       }
+   ```
+
+4. 测试结果
+
+   ![image-20201024131505063](MyBatis文档.assets/image-20201024131505063.png)

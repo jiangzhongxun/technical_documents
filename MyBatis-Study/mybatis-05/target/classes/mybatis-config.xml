@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 读取配置文件 -->
+    <properties resource="db.properties"/>
+
+    <!-- 基本设置 -->
+    <settings>
+        <!-- STDOUT_LOGGING 日志实现 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 显示的开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!-- 数据库运行环境 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 配置映射 -->
+    <mappers>
+        <mapper class="com.bai.dao.UserMapper"/>
+    </mappers>
+
+</configuration>
