@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    id 就是 bean 的唯一限定名
+    class 就是 bean 引用的对象
+    name 是别名，比 alias 更为高级，
+    -->
+    <bean id="hello" class="com.bai.pojo.Hello" name="h1,h2 h3;h4">
+        <property name="str" value="李逵"/>
+    </bean>
+
+</beans>
