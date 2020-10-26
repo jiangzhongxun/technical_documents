@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.bai.pojo.Student">
+        <!-- set 方式注入 -->
+        <property name="name" value="大圣"/>
+
+        <!-- 引用类型注入 -->
+        <property name="address" ref="address"/>
+
+        <!-- null 类型注入 -->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!-- List 类型注入 -->
+        <property name="hobbys">
+            <list>
+                <value>听歌</value>
+                <value>敲代码</value>
+                <value>打游戏</value>
+            </list>
+        </property>
+
+        <!-- Set 类型注入 -->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>CF</value>
+                <value>DNF</value>
+            </set>
+        </property>
+
+        <!-- Map 类型注入 -->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="111111222222223333"/>
+                <entry key="学号" value="123456798613"/>
+            </map>
+        </property>
+
+        <!-- 数组类型注入 -->
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+                <value>三国演义</value>
+            </array>
+        </property>
+
+        <!-- Properties 类型注入 -->
+        <property name="info">
+            <props>
+                <prop key="邮箱">bai211425401@126.com</prop>
+                <prop key="公司">杭州阿里巴巴</prop>
+                <prop key="职业">程序猿</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="address" class="com.bai.pojo.Address">
+        <property name="name" value="上海"/>
+    </bean>
+
+    <!-- c命名空间注入，通过 property 方式注入 -->
+    <bean id="user" class="com.bai.pojo.User" p:name="小虎" p:age="3"/>
+
+    <!-- p命名空间注入，通过 construct-args 方式注入 -->
+    <bean id="user2" class="com.bai.pojo.User" c:name="刘大力" c:age="11"/>
+
+</beans>

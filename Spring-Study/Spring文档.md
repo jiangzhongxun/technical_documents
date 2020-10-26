@@ -228,3 +228,409 @@ import 配置用于引入其他 xml 中配置的信息
 ```
 
 ***注意：就算三个 bean.xml 文件中有相同的数据时，取相同的 bean 时，也会随机取出其中一个 bean 用来使用的，并不会发生报错等情况！***
+
+# 5. Spring 的依赖注入
+
+## 5.1 构造函数注入
+
+前面已经说过了
+
+## 5.2 Set 方式注入
+
+创建测试环境
+
+- 创建实体类用于测试各种类型的注入
+
+  ***Address 类***
+
+  ```java
+  import lombok.Data;
+  
+  /**
+   * @author: 南独酌酒 <211425401@126.com>
+   * @date: 2020/10/26 20:49
+   */
+  @Data
+  public class Address {
+      private String name;
+  }
+  ```
+
+  ***Student 类***
+
+  ```java
+  import lombok.Data;
+  
+  import java.io.Serializable;
+  import java.util.List;
+  import java.util.Map;
+  import java.util.Properties;
+  import java.util.Set;
+  
+  /**
+   * @author: 南独酌酒 <211425401@126.com>
+   * @date: 2020/10/26 20:49
+   */
+  @Data
+  public class Student implements Serializable {
+      /**
+       * 基本类型
+       */
+      private String name;
+      /**
+       * 引用类型
+       */
+      private Address address;
+      /**
+       * 空 null 类型
+       */
+      private String wife;
+      /**
+       * List 类型
+       */
+      private List<String> hobbys;
+      /**
+       * Set 类型
+       */
+      private Set<String> games;
+      /**
+       * Map 类型
+       */
+      private Map<String, String> card;
+      /**
+       * 数组类型
+       */
+      private String[] books;
+      /**
+       * 配置文件类型 Properties
+       */
+      private Properties info;
+  }
+  ```
+
+  
+
+- 创建 beans.xml 文件配置对象到 Spring 容器中去
+
+  ```xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+          https://www.springframework.org/schema/beans/spring-beans.xsd">
+      <!-- Set 方式注入各种类型的属性 -->
+      <bean id="student" class="com.bai.pojo.Student">
+          <property name="name" value="大圣"/>
+      </bean>
+  </beans>
+  ```
+
+  
+
+- 测试
+
+  ```java
+  public class MyTest {
+      public static void main(String[] args) {
+          ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+          Student student = (Student) context.getBean("student");
+          System.err.println(student.toString());
+      }
+  }
+  ```
+
+- 完善注入代码
+
+  ```xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+          https://www.springframework.org/schema/beans/spring-beans.xsd">
+      <bean id="student" class="com.bai.pojo.Student">
+          <!-- set 方式注入 -->
+          <property name="name" value="大圣"/>
+  
+          <!-- 引用类型注入 -->
+          <property name="address" ref="address"/>
+  
+          <!-- null 类型注入 -->
+          <property name="wife">
+              <null/>
+          </property>
+  
+          <!-- List 类型注入 -->
+          <property name="hobbys">
+              <list>
+                  <value>听歌</value>
+                  <value>敲代码</value>
+                  <value>打游戏</value>
+              </list>
+          </property>
+  
+          <!-- Set 类型注入 -->
+          <property name="games">
+              <set>
+                  <value>LOL</value>
+                  <value>CF</value>
+                  <value>DNF</value>
+              </set>
+          </property>
+  
+          <!-- Map 类型注入 -->
+          <property name="card">
+              <map>
+                  <entry key="身份证" value="111111222222223333"/>
+                  <entry key="学号" value="123456798613"/>
+              </map>
+          </property>
+  
+          <!-- 数组类型注入 -->
+          <property name="books">
+              <array>
+                  <value>红楼梦</value>
+                  <value>西游记</value>
+                  <value>水浒传</value>
+                  <value>三国演义</value>
+              </array>
+          </property>
+  
+          <!-- Properties 类型注入 -->
+          <property name="info">
+              <props>
+                  <prop key="邮箱">bai211425401@126.com</prop>
+                  <prop key="公司">杭州阿里巴巴</prop>
+                  <prop key="职业">程序猿</prop>
+              </props>
+          </property>
+      </bean>
+  
+      <bean id="address" class="com.bai.pojo.Address">
+          <property name="name" value="上海"/>
+      </bean>
+  </beans>
+  ```
+
+- 测试结果
+
+  ```java
+  	Student(
+          name=大圣,
+          address=Address(
+              name=上海
+          ),
+          wife=null,
+          hobbys=[听歌, 敲代码, 打游戏],
+          games=[LOL, CF, DNF],
+          card={
+              身份证=111111222222223333,
+              学号=123456798613
+          },
+          books=[红楼梦, 西游记, 水浒传, 三国演义],
+          info={
+              邮箱=bai211425401@126.com,
+              公司=杭州阿里巴巴,
+              职业=程序猿
+          })
+  ```
+
+## 5.3 扩展方式注入
+
+Spring 格外提供了两种命名空间的方式注入
+
+分别为 c 命名空间和 p 命名空间
+
+要想使用命名空间的方式注入，需要在 spring 容器中引入相关依赖配置
+
+```xml
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:c="http://www.springframework.org/schema/c"
+```
+
+测试案例
+
+- ***创建 User 类***
+
+  ```java
+  /**
+   * @author: 南独酌酒 <211425401@126.com>
+   * @date: 2020/10/26 21:25
+   */
+  public class User {
+      private String name;
+      private int age;
+  
+      public User() {
+      }
+  
+      public User(String name, int age) {
+          this.name = name;
+          this.age = age;
+      }
+  
+      public String getName() {
+          return name;
+      }
+  
+      public void setName(String name) {
+          this.name = name;
+      }
+  
+      public int getAge() {
+          return age;
+      }
+  
+      public void setAge(int age) {
+          this.age = age;
+      }
+  
+      @Override
+      public String toString() {
+          return "User{" +
+                  "name='" + name + '\'' +
+                  ", age=" + age +
+                  '}';
+      }
+  }
+  ```
+
+  
+
+- ***Spring 容器***
+
+  ```xml
+  <!-- c命名空间注入，通过 property 方式注入 -->
+      <bean id="user" class="com.bai.pojo.User" p:name="小虎" p:age="3"/>
+  
+      <!-- p命名空间注入，通过 construct-args 方式注入 -->
+      <bean id="user2" class="com.bai.pojo.User" c:name="刘大力" c:age="11"/>
+  ```
+
+  
+
+- 测试
+
+  ```java
+   	@Test
+      public void test02() {
+          ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+          User user = context.getBean("user2", User.class);
+          System.out.println(user);
+      }
+  ```
+
+  
+
+# 6. Bean 的作用域
+
+![image-20201026214245951](Spring文档.assets/image-20201026214245951.png)
+
+## 6.1 singleton
+
+![image-20201026214519643](Spring文档.assets/image-20201026214519643.png)
+
+***将每个Spring IoC容器的单个bean定义范围限定为单个对象实例***
+
+bean 的作用域默认就是单例模式，大家获取的 bean 都来自同一个
+
+## 6.2 prototype
+
+![image-20201026214533136](Spring文档.assets/image-20201026214533136.png)
+
+***将单个bean定义的作用域限定为任意数量的对象实例。***
+
+每个 bean 都会产生一个不同的对象
+
+------
+
+***request session application 都来自 web***
+
+# 7. Bean 的自动装配
+
+搭建基础环境
+
+- ***创建 Cat 类、Dog类，Person类引用猫类 Cat和狗类 Dog***
+
+  ```java
+  public class Cat {
+      public void shout() {
+          System.err.println("miao~");
+      }
+  }
+  
+  
+  public class Dog {
+      public void shout() {
+          System.err.println("wang~");
+      }
+  }
+  
+  
+  public class Person {
+      private String name;
+      private Cat cat;
+      private Dog dog;
+  
+      public String getName() {
+          return name;
+      }
+  
+      public void setName(String name) {
+          this.name = name;
+      }
+  
+      public Cat getCat() {
+          return cat;
+      }
+  
+      public void setCat(Cat cat) {
+          this.cat = cat;
+      }
+  
+      public Dog getDog() {
+          return dog;
+      }
+  
+      public void setDog(Dog dog) {
+          this.dog = dog;
+      }
+  
+      @Override
+      public String toString() {
+          return "Person{" +
+                  "name='" + name + '\'' +
+                  ", cat=" + cat +
+                  ", dog=" + dog +
+                  '}';
+      }
+  }
+  ```
+
+## 7.1 byName 方式
+
+```xml
+	<bean id="cat" class="com.bai.pojo.Cat"/>
+    <bean id="dog" class="com.bai.pojo.Dog"/>
+
+    <!--
+    byName 方式是自动寻找当前 Spring 山下问中设置的 beanId,必须保证 beanId 和尸体了中的 set方法的名称一致，否则就会报错
+    -->
+    <bean id="person" class="com.bai.pojo.Person" autowire="byName">
+        <property name="name" value="小狂神"/>
+    </bean>
+```
+
+## 7.2 byType 方式
+
+```xml
+	<bean id="cat" class="com.bai.pojo.Cat"/>
+    <bean id="dog1321" class="com.bai.pojo.Dog"/>
+
+    <!--
+    byType 方式是自动寻找当前 Spring 上下文中设置的 bean 的 class 类型，必须保证 class 类型唯一，如果存在多个，就会报错
+    -->
+    <bean id="person" class="com.bai.pojo.Person" autowire="byType">
+        <property name="name" value="小狂神"/>
+    </bean>
+```
+
