@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="cat" class="com.bai.pojo.Cat"/>
+    <!-- 开启注解的配置 -->
+    <context:annotation-config/>
+
+    <bean id="cat11" class="com.bai.pojo.Cat"/>
+    <bean id="cat22" class="com.bai.pojo.Cat"/>
     <bean id="dog1321" class="com.bai.pojo.Dog"/>
-
-    <!--
-    byName 方式是自动寻找当前 Spring 山下问中设置的 beanId,必须保证 beanId 和尸体了中的 set方法的名称一致，否则就会报错
-    byType 方式是自动寻找当前 Spring 上下文中设置的 bean 的 class 类型，必须保证 class 类型唯一，如果存在多个，就会报错
-    -->
-    <bean id="person" class="com.bai.pojo.Person" autowire="byType">
-        <property name="name" value="小狂神"/>
-    </bean>
+    <bean id="person" class="com.bai.pojo.Person"/>
 
 </beans>

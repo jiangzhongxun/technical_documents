@@ -7,11 +7,12 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 开启注解的配置 -->
+    <!-- 开启 spring 注解的配置 -->
     <context:annotation-config/>
-
-    <bean id="cat" class="com.bai.pojo.Cat"/>
-    <bean id="dog" class="com.bai.pojo.Dog"/>
-    <bean id="person" class="com.bai.pojo.Person"/>
+    <!--
+    开启 spring 注解要扫描包的位置, com.bai.pojo 包下的所有类都会去进行扫描,看看是否存在注解
+    存在注解就会被注册到 spring 容器中来
+    -->
+    <context:component-scan base-package="com.bai.pojo"/>
 
 </beans>

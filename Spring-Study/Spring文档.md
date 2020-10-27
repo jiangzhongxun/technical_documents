@@ -634,3 +634,226 @@ bean 的作用域默认就是单例模式，大家获取的 bean 都来自同一
     </bean>
 ```
 
+## 7.3 通过注解实现自动装配
+
+- 首先要在 spring 容器中配置支持注解
+
+  - 添加注解的约束
+
+    ```xml
+    xmlns:context="http://www.springframework.org/schema/context"
+    http://www.springframework.org/schema/context
+    https://www.springframework.org/schema/context/spring-context.xsd"
+    ```
+
+    
+
+  - 添加开启注解配置
+
+    `context:annotation-config/>`
+
+### @Autowired 注解
+
+```java
+public class Person {
+    private String name;
+    @Autowired
+    private Cat cat;
+    @Autowired
+    private Dog dog;
+}
+```
+
+可以添加到属性上面，也可以添加到 set 方法上
+
+@Autowired 属性首先跟据类型去寻找对象，如果此对象有多个的情况下，可以使用@Qualifier(value = "xxx") 注解配置要寻找的 bean 的名称
+
+如果名称和类型都匹配不到的话就会报错！
+
+### @Resource 注解
+
+```java
+public class Person {
+    private String name;
+    @Resource
+    private Cat cat;
+    @Resource
+    private Dog dog;
+}
+```
+
+@Resource 注解首先跟据名称去寻找对应的 bean 对象，如果名字找不到就会跟据类型去寻找对应的 bean 对象，如果二者都找不到的话就会报错！
+
+
+
+# 8. 使用注解开发
+
+1. 要使用注解，首先要在项目中引入 context 的依赖包
+
+![image-20201027214603300](Spring文档.assets/image-20201027214603300.png)
+
+2. 然后在 Spring 配置文件中添加 context 的约束并开启注解的配置
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <beans xmlns="http://www.springframework.org/schema/beans"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:context="http://www.springframework.org/schema/context"
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           https://www.springframework.org/schema/context/spring-context.xsd">
+   
+       <!-- 开启 spring 注解的配置 -->
+       <context:annotation-config/>
+       <!--
+       开启 spring 注解要扫描包的位置, com.bai.pojo 包下的所有类都会去进行扫描,看看是否存在注解
+       存在注解就会被注册到 spring 容器中来
+       -->
+       <context:component-scan base-package="com.bai.pojo"/>
+   
+   </beans>
+   ```
+
+## 8.1 @Component 注解
+
+value 等价于给 bean 取了个别名
+
+如果没有使用 value ，那么默认的名字就是类名的小写 `user`
+
+```java
+// 此行配置等价于 <bean id="user222" class="com.bai.pojo.User"/>
+@Component(value = "user222")
+public class User {
+    public String name = "哪吒";
+}
+```
+
+## 8.2 @Value 注解
+
+```java
+// 此行配置等价于 <property name="name" value="小白龙"/>
+@Value("小白龙")
+private String name;
+```
+
+## 8.3 衍生注解
+
+***@Repository 注解***
+
+***@Service 注解***
+
+***@Controller注解***
+
+这三个注解的作用等价与 @Component。
+
+只不过是用来区分三层架构的模式。
+
+## 8.4 @Scope 注解
+
+```java
+// 此行配置等价于 <bean id="user222" class="com.bai.pojo.User"/>
+@Component(value = "user222")
+// 作用域注解
+@Scope(value = "prototype")
+public class User {
+    // 此行配置等价于 <property name="name" value="小白龙"/>
+    @Value("小白龙")
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+```
+
+## 8.5 小结
+
+xml 与注解：
+
+- xml 更加万能，适用于各种场合，维护简单方便
+- 注解不是自己的类使用不了，维护相对复杂！
+
+# 9. 使用注解替换xml配置
+
+我们可以完全使用注解的方式替换掉 xml 方式来配置 Spring 
+
+创建实体类
+
+```java
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author: 南独酌酒 <211425401@126.com>
+ * @date: 2020/10/27 22:18
+ */
+@Component
+public class User {
+    @Value("哪吒")
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+}
+```
+
+创建配置类，替换掉 xml 配置
+
+***配置了 @Configuration 注解就表示此类被 Spring 容器托管了，***
+
+***@ComponentScan 扫描指定的包***
+
+***@Bean 注解就等价于 bean 标签，getUser 等价于 bean 标签的 id，返回值类型就等价于 class 属性***
+
+```java
+import com.bai.pojo.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @author: 南独酌酒 <211425401@126.com>
+ * @date: 2020/10/27 22:19
+ */
+@Configuration
+@ComponentScan("com.bai.pojo")
+public class SpringConfig {
+
+    @Bean
+    public User getUser() {
+        return new User();
+    }
+
+}
+```
+
+测试
+
+***由于使用了全注解开发的方式，获取 spring 上下文也要通过 AnnotationConfig 方式读取到配置信息***
+
+```java
+ 	@Test
+    public void test1() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        User getUser = context.getBean("getUser", User.class);
+        System.out.println(getUser.getName());
+    }
+```
+
