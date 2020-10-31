@@ -7,14 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-01-helloSpring" />
+        <module name="spring-08-mybatis" />
+        <module name="spring-05-appconfig" />
+        <module name="spring-07-aop" />
         <module name="spring-02-di" />
         <module name="spring-03-Autowired" />
-        <module name="spring-05-appconfig" />
+        <module name="spring-06-proxy" />
         <module name="spring-04-annoation" />
+        <module name="spring-09-transaction" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="spring-01-di" target="1.5" />
+    <bytecodeTargetLevel target="8">
+      <module name="mybatis-09-transaction" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

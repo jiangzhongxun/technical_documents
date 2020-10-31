@@ -857,3 +857,678 @@ public class SpringConfig {
     }
 ```
 
+# 10. 代理模式
+
+## 10.1 静态代理
+
+代理模式的好处：
+
+- 可以使真实角色的操作更加纯粹，不用去关注一些公共的业务
+- 公共业务就交给代理角色！实现了业务的分工！
+- 公共业务发生扩展的时候，方便集中管理！
+
+缺点：
+
+- **一个真实角色就会产生一个代理角色，代码量会翻倍，开发效率会变低！**
+
+## 10.2 动态代理
+
+- 动态代理和静态代理角色一样。
+- **动态代理的代理类是动态生成的，不需要我们手动写，这是动态代理和静态代理最大的区别了。**
+- 动态大力分为两大类：基于接口的动态代理，基于类的动态代理
+  - 基于接口：JDK动态代理
+  - 基于类：cglib
+  - java字节码实现：javasist
+
+需要了解两个类：***Proxy 代理***，***InvocationHandler 调用处理程序***
+
+动态代理的好处：
+
+- 可以使真实角色的操作更加纯粹，不用去关注一些公共的业务！
+- 公共业务就交给代理角色！实现了业务的分工！
+- 公共业务发生扩展的时候，方便集中管理！
+- 一个动态代理类代理的是一个接口，一般就是对应的一类事务！
+- 一个动态代理类可以代理多个类，只要是实现了同一个接口即可！
+
+# 11. AOP
+
+**使用 Spring 实现 AOP**
+
+使用 API ，需要导入依赖包
+
+```xml
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.8.13</version>
+</dependency>
+```
+
+## 11.1 使用原生 Spring API 接口实现 AOP
+
+1. 创建 UserService 接口和 UserServiceImpl 实现类
+
+   ```java
+   public interface UserService {
+       public void add();
+       public void delete();
+       public void update();
+       public void select();
+       public String console();
+   }
+   ```
+
+   ```java
+   public class UserServiceImpl implements UserService {
+       @Override
+       public void add() {
+           System.out.println("添加了一个用户");
+       }
+   
+       @Override
+       public void delete() {
+           System.out.println("删除了一个用户");
+       }
+   
+       @Override
+       public void update() {
+           System.out.println("更新了一个用户");
+       }
+   
+       @Override
+       public void select() {
+           System.out.println("查询了一个用户");
+       }
+   
+       @Override
+       public String console() {
+           return "大胡子";
+       }
+   }
+   ```
+
+   
+
+2. 创建 BeforeLog（前置增强） 和 AfterLog（后置增强） 增强日期类
+
+   ```java
+   public class BeforeLog implements MethodBeforeAdvice {
+       /**
+        * 方法前置增强
+        *
+        * @param method 要执行的目标对象的方法
+        * @param args   参数
+        * @param target 目标对象
+        */
+       @Override
+       public void before(Method method, Object[] args, Object target) throws Throwable {
+           System.err.println(target.getClass().getName() + "执行了" + method.getName() + "方法");
+       }
+   }
+   ```
+
+   ```java
+   public class AfterLog implements AfterReturningAdvice {
+       /**
+        * 方法后置增强
+        *
+        * @param returnValue 方法的返回值
+        * @param method      要执行的目标对象的方法
+        * @param args        参数
+        * @param target      目标对象
+        */
+       @Override
+       public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
+           System.err.println(target.getClass().getName() + "执行了" + method.getName() + "方法,返回值为" + returnValue);
+       }
+   }
+   ```
+
+   
+
+3. 创建 Spring 核心配置文件 applicationContext.xml，注册 bean 和配置切入点
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <beans xmlns="http://www.springframework.org/schema/beans"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:aop="http://www.springframework.org/schema/aop"
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           https://www.springframework.org/schema/aop/spring-aop.xsd">
+       
+       <!-- 注册 bean -->
+       <bean id="userService" class="com.bai.service.UserServiceImpl"/>
+       <bean id="beforeLog" class="com.bai.log.BeforeLog"/>
+       <bean id="afterLog" class="com.bai.log.AfterLog"/>
+   
+       <!-- todo 方式一: 使用原生 Spring API 接口 -->
+       <!-- 配置 aop: 需要导入 aop 的约束 -->
+       <aop:config>
+           <!-- 配置切入点  expression 表达式，要切入的位置-->
+           <!--
+           execution(* com.bai.service.UserServiceImpl.*(..)) 表达式的意思为；
+           在com.bai.service.UserServiceImpl 类下的所有方法，所有参数匹配进切入点
+           -->
+           <aop:pointcut id="pointcut" expression="execution(* com.bai.service.UserServiceImpl.*(..))"/>
+   
+           <!-- 执行环绕增强 -->
+           <aop:advisor advice-ref="beforeLog" pointcut-ref="pointcut"/>
+           <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>
+       </aop:config>
+   
+   </beans>
+   ```
+
+4. 测试
+
+   ```java
+   public class MyTest {
+       @Test
+       public void test01() {
+           ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+           UserService userService = context.getBean("userService", UserService.class);
+           userService.add();
+           System.out.println("======================================");
+           userService.console();
+       }
+   }	
+   ```
+
+5. 测试结果
+
+![image-20201031123336636](Spring文档.assets/image-20201031123336636.png)
+
+## 11.2 自定义来实现 AOP
+
+1. 自定义要切入的类
+
+   ```java
+   public class MyLogNotice {
+       public void before() {
+           System.err.println("方法执行前 >>>>>>");
+       }
+   
+       public void after() {
+           System.err.println("方法执行后 >>>>>>");
+       }
+   }
+   ```
+
+   
+
+2. 在 applicatonContext.xml 中配置 aop
+
+   ```xml
+   <!-- todo 方式二：自定义实现 aop -->
+       <bean class="com.bai.log.MyLogNotice" id="myLogNotice"/>
+       <aop:config>
+           <!-- 自定义切面 ref 要引用的类 -->
+           <aop:aspect ref="myLogNotice">
+               <!-- 定义切入点 -->
+               <aop:pointcut id="pointcut" expression="execution(* com.bai.service.UserServiceImpl.*(..))"/>
+               <!-- 通过 -->
+               <aop:before method="before" pointcut-ref="pointcut"/>
+               <aop:after method="after" pointcut-ref="pointcut"/>
+           </aop:aspect>
+       </aop:config>
+   ```
+
+3. 测试
+
+   ```java
+   public class MyTest {
+       @Test
+       public void test01() {
+           ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+           UserService userService = context.getBean("userService", UserService.class);
+           userService.add();
+       }
+   }
+   ```
+
+4. 测试结果
+
+   ![image-20201031125115335](Spring文档.assets/image-20201031125115335.png)
+
+## 11.3 使用注解方式实现 AOP
+
+1. 自定义切面类
+
+   ```java
+   import org.aspectj.lang.ProceedingJoinPoint;
+   import org.aspectj.lang.annotation.After;
+   import org.aspectj.lang.annotation.Around;
+   import org.aspectj.lang.annotation.Aspect;
+   import org.aspectj.lang.annotation.Before;
+   
+   /**
+    * @author: 南独酌酒 <211425401@126.com>
+    * @date: 2020/10/31 13:03
+    */
+   @Aspect // 标注此类为一个切面
+   public class MyAnnotationAdvice {
+       @Before("execution(* com.bai.service.UserServiceImpl.*(..))")
+       public void before() {
+           System.out.println("方法执行前======");
+       }
+   
+       @Around("execution(* com.bai.service.UserServiceImpl.*(..))")
+       public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+           System.out.println("方法环绕前======");
+           // 方法签名
+           System.out.println(joinPoint.getSignature());
+           // 执行方法
+           joinPoint.proceed();
+           System.out.println("方法环绕后======");
+       }
+   
+       @After("execution(* com.bai.service.UserServiceImpl.*(..))")
+       public void after() {
+           System.out.println("方法执行后======");
+       }
+   }
+   ```
+
+   
+
+2. 在 spring 核心配置文件 applicatioinContext.xml 中配置开启 aop 注解扫描
+
+   ```xml
+   <!-- todo 方式三: 使用注解实现 aop -->
+   <bean class="com.bai.log.MyAnnotationAdvice" id="myAnnotationAdvice"/>
+   <!-- 开启aop注解扫描 -->
+   <aop:aspectj-autoproxy/>
+   ```
+
+   
+
+3. 测试
+
+   ```java
+   	@Test
+       public void test01() {
+           ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+           UserService userService = context.getBean("userService", UserService.class);
+           userService.add();
+       }
+   ```
+
+   
+
+4. 测试结果
+
+   ![image-20201031131214394](Spring文档.assets/image-20201031131214394.png)
+
+# 12. Spring 整合 MyBatis
+
+1. Spring 整合 MyBatis 首先引入相关依赖
+
+   - mysql 依赖
+   - myBatis 依赖
+   - spring 相关依赖
+   - spring-jdbc 依赖
+   - aop 植入依赖
+   - mybatis-spring 依赖
+   - Junit 单元测试依赖
+   - lombok 简化开发依赖
+
+   ```xml
+   		<!-- mysql 连接依赖 -->
+           <dependency>
+               <groupId>mysql</groupId>
+               <artifactId>mysql-connector-java</artifactId>
+               <version>5.1.47</version>
+           </dependency>
+           <!-- mybatis 依赖 -->
+           <dependency>
+               <groupId>org.mybatis</groupId>
+               <artifactId>mybatis</artifactId>
+               <version>3.5.5</version>
+           </dependency>
+           <!-- spring 操作数据库依赖 -->
+           <dependency>
+               <groupId>org.springframework</groupId>
+               <artifactId>spring-jdbc</artifactId>
+               <version>5.3.0</version>
+           </dependency>
+           <!-- aop 植入依赖 -->
+           <dependency>
+               <groupId>org.aspectj</groupId>
+               <artifactId>aspectjweaver</artifactId>
+               <version>1.9.5</version>
+           </dependency>
+           <!-- mybatis 和 spring 整合的依赖 -->
+           <dependency>
+               <groupId>org.mybatis</groupId>
+               <artifactId>mybatis-spring</artifactId>
+               <version>2.0.4</version>
+           </dependency>
+   		<!-- 添加 Spring 相关依赖 -->
+           <dependency>
+               <groupId>org.springframework</groupId>
+               <artifactId>spring-webmvc</artifactId>
+               <version>5.2.9.RELEASE</version>
+           </dependency>
+           <!-- 添加 junit 依赖 -->
+           <dependency>
+               <groupId>junit</groupId>
+               <artifactId>junit</artifactId>
+               <version>4.13</version>
+           </dependency>
+           <!-- 添加 lombok 依赖 -->
+           <dependency>
+               <groupId>org.projectlombok</groupId>
+               <artifactId>lombok</artifactId>
+               <version>1.18.12</version>
+           </dependency>
+   ```
+
+2. 创建数据库 mybatis 
+
+   ```sql
+   -- 创建测试数据库
+   CREATE DATABASE `mybatis`;
+   
+   -- 使用此数据库
+   USE `mybatis`;
+   
+   -- 创建 user 表
+   CREATE TABLE user(
+   	`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   	`name` VARCHAR(30) NOT NULL,
+   	`pwd` VARCHAR(30) NOT NULL
+   )ENGINE=INNODB CHARSET UTF8;
+   
+   -- 添加3条测试数据
+   INSERT INTO user(`name`, `pwd`) VALUES
+   ('张三', '864531'),
+   ('李四', '1564513'),
+   ('刘鹏飞', '9846513')
+   ```
+
+3. 创建 User 类
+
+   ```java
+   @Data
+   public class User {
+       private Integer id;
+       private String name;
+       private String pwd;
+   }
+   ```
+
+4. 创建 UserMapper 接口和 UserMapper.xml 文件
+
+   ```java
+   public interface UserMapper {
+       public List<User> getUserList();
+   }
+   ```
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE mapper
+           PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <mapper namespace="com.bai.mapper.UserMapper">
+       <select id="getUserList" resultType="com.bai.pojo.User">
+           select * from user;
+       </select>
+   </mapper>
+   ```
+
+5. 创建 MyBatis 核心配置文件 ***mybatis-config.xml*** 
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE configuration
+           PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+           "http://mybatis.org/dtd/mybatis-3-config.dtd">
+   <configuration>
+       <!-- todo 基本设置 -->
+       <settings>
+           <!-- todo STDOUT_LOGGING 日志实现 -->
+           <setting name="logImpl" value="STDOUT_LOGGING"/>
+       </settings>
+   </configuration>
+   ```
+
+6. 创建 ***spring-mybatis.xml*** 文件，用于将 MyBatis 整合进 Spring 中去。
+
+   - 配置数据源 dataSource 连接数据库
+   - 配置 SqlSessionFactory 引用数据源 dataSource，然后在绑定 MyBatis 相关配置文件，可以通过 **configLocation** 找到上一步创建的 mybatis-config.xml ，在通过 mapperLocations 配置相关的 xml 文件，用于执行编写的 sql 语句。
+   - 最后通过配置 SqlSessionTemplate 来操作，SqlSessionTemplate 等同于 SqlSession 对象，都是用来执行 Sql 语句的。
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <beans xmlns="http://www.springframework.org/schema/beans"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+       <!-- todo: 配置数据源连接数据库 -->
+       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+           <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+           <property name="url"
+                     value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+           <property name="username" value="root"/>
+           <property name="password" value="123456"/>
+       </bean>
+   
+       <!-- todo: 配置 SqlSessionFactory -->
+       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+           <property name="dataSource" ref="dataSource"/>
+           <!-- 绑定 MyBatis 配置文件 -->
+           <property name="configLocation" value="mybatis-config.xml"/>
+           <property name="mapperLocations" value="classpath:com/bai/mapper/*.xml"/>
+       </bean>
+   
+       <!-- todo: 配置 SqlSessionTemplate -->
+       <!-- SqlSessionTemplate 等同于 SqlSession -->
+       <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+           <!-- 只能通过构造器注入 SqlSessionTemplate -->
+           <!-- 因为 SqlSessionTemplate 此类中并没有 set 方法 -->
+           <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+       </bean>
+   
+   </beans>
+   ```
+
+7. 创建 UserMapperImpl 实现 UserMapper 接口
+
+   ```java
+   import com.bai.pojo.User;
+   import org.mybatis.spring.SqlSessionTemplate;
+   
+   import java.util.List;
+   
+   public class UserMapperImpl implements UserMapper {
+       private SqlSessionTemplate sqlSession;
+   
+       public void setSqlSession(SqlSessionTemplate sqlSession) {
+           this.sqlSession = sqlSession;
+       }
+   
+       public List<User> getUserList() {
+           return sqlSession.getMapper(UserMapper.class).getUserList();
+       }
+   }
+   ```
+
+   
+
+8. 创建Spring核心配置文件 ***applicationContext.xml*** ，将 UserMapperImpl 注册进 Spring 中去。
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <beans xmlns="http://www.springframework.org/schema/beans"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:aop="http://www.springframework.org/schema/aop"
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           https://www.springframework.org/schema/aop/spring-aop.xsd">
+       <!-- 引入 spring 整合 mybatis 的配置 -->
+       <import resource="spring-mybatis.xml"/>
+   
+       <bean id="userMapper" class="com.bai.mapper.UserMapperImpl">
+           <property name="sqlSession" ref="sqlSession"/>
+       </bean>
+   
+   </beans>
+   ```
+
+9. 测试
+
+   ```java
+   public class MyTest {
+       @Test
+       public void test01() {
+           ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+           UserMapper userMapper = context.getBean("userMapper", UserMapper.class);
+           for (User user : userMapper.getUserList()) {
+               System.out.println(user);
+           }
+       }
+   }
+   ```
+
+10. 输出结果
+
+    ![image-20201031161751048](Spring文档.assets/image-20201031161751048.png)
+
+**通过 SqlSessionDaoSupport 简化开发**
+
+我们自己的实现类只需要继承了 SqlSessionDaoSupport 即可通过 getSqlSession() 方法获取到 Sqlsession 对象，然后通过 SqlSession 就可以操作数据库了。
+
+实现方式：
+
+1. 创建 UserMapperImpl2 实现 UserMapper 接口
+
+   ```java
+   import com.bai.pojo.User;
+   import org.mybatis.spring.support.SqlSessionDaoSupport;
+   
+   import java.util.List;
+   
+   public class UserMapperImpl2 extends SqlSessionDaoSupport implements UserMapper {
+       public List<User> getUserList() {
+           return getSqlSession().getMapper(UserMapper.class).getUserList();
+       }
+   }
+   ```
+
+   
+
+2. 将 UserMapperImpl2 注册进 applicationContext.xml 中去。
+
+   ```xml
+   <bean id="userMapper2" class="com.bai.mapper.UserMapperImpl2">
+   	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+   </bean>
+   ```
+
+   
+
+3. 测试同上，只需要将 getBean 获取的名字改成 userMapper2 即可，测试结果同上。
+
+# 13. Spring 的事务
+
+事务的特性：ACID，保证一组业务要么同时成功，要么同时失败！
+
+- 原子性
+- 一致性
+- 隔离性
+- 持久性
+
+Spring 中的事务非为两种
+
+- 声明式事务：通过 AOP 实现
+- 编程式事务：通过在代码中，进行事务的管理
+
+## 13.1 Spring 实现声明式事务
+
+在 Spring 容器中通过 aop 织入事务的支持
+
+首先使用  aop 要引入约束：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- todo: 配置数据源连接数据库 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <!-- todo: 配置 SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- todo 绑定 MyBatis 配置文件 -->
+        <property name="configLocation" value="mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:com/bai/mapper/*.xml"/>
+    </bean>
+
+    <!-- todo: 配置 SqlSessionTemplate -->
+    <!-- todo SqlSessionTemplate 等同于 SqlSession -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <!-- todo 只能通过构造器注入 SqlSessionTemplate -->
+        <!-- todo 因为 SqlSessionTemplate 此类中并没有 set 方法 -->
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!-- todo 配置声明式事务 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- todo 结合 AOP 实现事务的织入 -->
+    <!-- todo 配置事务通知 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!-- todo 给需要事务的方法进行定制化配置 -->
+        <tx:attributes>
+            <tx:method name="add" propagation="REQUIRED"/>
+            <tx:method name="delete" propagation="REQUIRED"/>
+            <tx:method name="update" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- todo 配置事务切入 -->
+    <aop:config>
+        <aop:pointcut id="txPointCut" expression="execution(* com.bai.mapper.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
+
+</beans>
+```
+
+在 UserMapperImpl 中人为制造错误。
+
+```java
+public List<User> getUserList() {
+        User user = new User(5, "马小跳", "999");
+        addUser(user);
+        int i = 1 / 0;	// 这样程序执行必定会报错 
+        return getSqlSession().getMapper(UserMapper.class).getUserList();
+    }
+```
+
+观察数据库是否能够添加成功，添加了声明式事务后，程序发生异常，数据会直接回滚。
+
+涉及数据比较重要的场景，一定要注意使用事务，不能马虎。
