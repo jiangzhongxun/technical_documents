@@ -212,3 +212,27 @@ Spring MVC 的特点：
 
 ![image-20201101123444576](SpringMVC文档.assets/image-20201101123444576.png)
 
+# 2. RESTful 风格
+
+RESTFul 风格的好处
+
+- 便捷
+- 高效
+- 安全
+
+原来的请求地址：http://localhost:8080/hello1?a=1&b=2
+
+Restful 的请求地址：http://localhost:8080/hello/1/2
+
+实现方法，通过 @PathVariable 注解添加到方法参数上即可
+
+```java
+ 	@GetMapping(value = "/t2/{a}/{b}")
+    public String test2(@PathVariable int a, @PathVariable int b, Model model) {
+        int res = a + b;
+        model.addAttribute("msg", "结果为：" + res);
+        return "hello";
+    }
+```
+
+**通过 @PathVariable 注解添加到 a b 变量上面，然后 @GetMapping 中的请求地址拼接写法可以写成：{参数名}  这样的写法即可将 url 上传的变量值赋给 a 这个参数**
