@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ac0ca34e-9ed0-494f-b94d-741e265af8a4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/bai/java8/MyFun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/bai/java8/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/bai/java8/TestLambda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/bai/java8/TestLambda2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot-Study/springboot-01-helloworld/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot-Study/springboot-01-helloworld/src/main/java/com/bai/Springboot01HelloworldApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot-Study/springboot-01-helloworld/src/main/java/com/bai/controller/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot-Study/springboot-01-helloworld/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot-Study/springboot-01-helloworld/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot-Study/springboot-01-helloworld/src/test/java/com/bai/Springboot01HelloworldApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Soft\apache-maven-3.6.3\repository" />
+        <option name="mavenHome" value="D:\Soft\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+        <option name="userSettingsFile" value="D:\Soft\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kxVR0CLLCknB7OeQBMJ8rGmAAL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="E:/ProjectDocuments/SpringBoot-Vhr" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RunManager" selected="Application.TestLambda2">
+    <configuration name="TestLambda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bai.java8.TestLambda" />
+      <module name="Java8-new-features" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bai.java8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestLambda2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bai.java8.TestLambda2" />
+      <module name="Java8-new-features" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bai.java8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestLambda2" />
+        <item itemvalue="Application.TestLambda" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\bai\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac0ca34e-9ed0-494f-b94d-741e265af8a4" name="Default Changelist" comment="" />
+      <created>1606642218030</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606642218030</updated>
+      <workItem from="1606642219094" duration="3915000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1606642948321">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1606642948321" />
+    <state width="1493" height="163" key="GridCell.Tab.0.bottom" timestamp="1606646707378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606646707378" />
+    <state width="1493" height="163" key="GridCell.Tab.0.center" timestamp="1606646707378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606646707378" />
+    <state width="1493" height="163" key="GridCell.Tab.0.left" timestamp="1606646707378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606646707378" />
+    <state width="1493" height="163" key="GridCell.Tab.0.right" timestamp="1606646707378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606646707378" />
+    <state x="319" y="146" key="IDE.errors.dialog" timestamp="1606643322535">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="319" y="146" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1606643322535" />
+    <state x="270" y="56" key="SettingsEditor" timestamp="1606642233024">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606642233024" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606646695353">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606646695353" />
+  </component>
+</project>
