@@ -1,4 +1,6 @@
-package com.bai.java8;
+package com.bai.java8.lambda;
+
+import java.util.Objects;
 
 /**
  * @author: 南独酌酒 <211425401@126.com>
@@ -40,6 +42,21 @@ public class Student {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return age == student.age &&
+                Double.compare(student.salary, salary) == 0 &&
+                Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, salary);
     }
 
     @Override

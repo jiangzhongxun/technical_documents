@@ -1,4 +1,4 @@
-package com.bai.java8;
+package com.bai.java8.lambda;
 
 
 import java.util.Arrays;

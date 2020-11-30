@@ -1,4 +1,4 @@
-package com.bai.java8;
+package com.bai.java8.lambda;
 
 /**
  * @author: 南独酌酒 <211425401@126.com>
