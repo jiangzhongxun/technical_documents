@@ -23,7 +23,26 @@ public class TestStreamAPI {
     );
 
     public static void main(String[] args) {
-        test4();
+        test5();
+    }
+
+    /**
+     * 排序
+     */
+    private static void test5() {
+        List<String> list = Arrays.asList("cc", "aa", "ee", "dd");
+        list.stream().sorted().forEach(System.out::println);
+
+        System.out.println("----------------");
+
+        students.stream()
+                .sorted((a, b) -> {
+                    if (a.getAge().equals(b.getAge())) {
+                        return a.getName().compareTo(b.getName());
+                    } else {
+                        return a.getAge().compareTo(b.getAge());
+                    }
+                }).forEach(System.out::println);
     }
 
     private static void test4() {
