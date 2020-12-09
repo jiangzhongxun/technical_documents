@@ -1,0 +1,12 @@
+# jdbc 数据源配置
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# 项目端口及访问路径配置
+server:
+  port: 8082
+  servlet:
+    context-path: /never
