@@ -17,7 +17,7 @@ class Springboot02DatasourceApplicationTests {
 
     @Test
     void contextLoads() throws SQLException {
-        System.out.println(dataSource);
+        System.out.println(dataSource.getClass());
         // 打开 jdbc 连接
         Connection connection = dataSource.getConnection();
         System.out.println(connection);
