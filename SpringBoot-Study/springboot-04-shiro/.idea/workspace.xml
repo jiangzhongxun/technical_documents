@@ -5,12 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bcd0bab-c7e6-4dda-aacb-843bed4b0504" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/ShiroConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/UserRealm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/controller/IndexController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/UserRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/UserRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/user/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/user/update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/test/java/com/bai/ShiroSpringbootApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/test/java/com/bai/ShiroSpringbootApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/ShiroConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/UserRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/UserRealm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/templates/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/templates/update.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/test-classes/com/bai/ShiroSpringbootApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/test-classes/com/bai/ShiroSpringbootApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +35,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="MyBatisMapperXML" />
       </list>
     </option>
   </component>
@@ -50,6 +67,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -64,14 +82,38 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\git仓库\technical_documents\SpringBoot-Study\springboot-04-shiro\shiro-springboot\src\main\resources\templates\user" />
+      <recent name="F:\git仓库\technical_documents\SpringBoot-Study\springboot-04-shiro\shiro-springboot\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ShiroSpringbootApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShiroSpringbootApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shiro-springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bai.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bai" />
+      <option name="MAIN_CLASS_NAME" value="com.bai.ShiroSpringbootApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -83,6 +125,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ShiroSpringbootApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -96,6 +143,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608127816431</updated>
       <workItem from="1608127818029" duration="2736000" />
+      <workItem from="1608210852061" duration="5342000" />
     </task>
     <servers />
   </component>
@@ -103,58 +151,66 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608215312962">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1608215312962" />
     <state x="574" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1608129927771">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1608129927771" />
-    <state width="1493" height="298" key="GridCell.Tab.0.bottom" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.0.bottom" timestamp="1608216253609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.0.center" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608216253609" />
+    <state width="1493" height="243" key="GridCell.Tab.0.center" timestamp="1608216253609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.0.left" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608216253609" />
+    <state width="1493" height="243" key="GridCell.Tab.0.left" timestamp="1608216253609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.0.right" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608216253609" />
+    <state width="1493" height="243" key="GridCell.Tab.0.right" timestamp="1608216253609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.1.bottom" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608216253609" />
+    <state width="1493" height="243" key="GridCell.Tab.1.bottom" timestamp="1608216253610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.1.center" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608216253610" />
+    <state width="1493" height="243" key="GridCell.Tab.1.center" timestamp="1608216253609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.1.left" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1608216253609" />
+    <state width="1493" height="243" key="GridCell.Tab.1.left" timestamp="1608216253609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.1.right" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1608216253609" />
+    <state width="1493" height="243" key="GridCell.Tab.1.right" timestamp="1608216253610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.2.bottom" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1608216253610" />
+    <state width="1493" height="243" key="GridCell.Tab.2.bottom" timestamp="1608216253610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.2.center" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608216253610" />
+    <state width="1493" height="243" key="GridCell.Tab.2.center" timestamp="1608216253610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.2.left" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1608216253610" />
+    <state width="1493" height="243" key="GridCell.Tab.2.left" timestamp="1608216253610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
-    <state width="1493" height="298" key="GridCell.Tab.2.right" timestamp="1608130566164">
+    <state width="1493" height="243" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1608216253610" />
+    <state width="1493" height="243" key="GridCell.Tab.2.right" timestamp="1608216253610">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1608130566164" />
+    <state width="1493" height="243" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1608216253610" />
+    <state x="349" y="146" key="IDE.errors.dialog" timestamp="1608215951223">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="146" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1608215951223" />
     <state x="270" y="56" key="SettingsEditor" timestamp="1608130563899">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
