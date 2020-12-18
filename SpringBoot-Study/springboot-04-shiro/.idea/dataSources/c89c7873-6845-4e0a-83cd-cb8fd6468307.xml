@@ -844,7 +844,11 @@ SELECT|sys.sys_config:null
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="252" parent="235" name="PRIMARY">
+    <column id="252" parent="235" name="perms">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <key id="253" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

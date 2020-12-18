@@ -1,7 +1,6 @@
 package com.bai.controller;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -11,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.crypto.interfaces.PBEKey;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -82,5 +83,17 @@ public class IndexController {
             model.addAttribute("msg", "密码错误");
             return "login";
         }
+    }
+
+    @GetMapping(value = "/noAuth")
+    @ResponseBody
+    public String noAuthorization() {
+        return "未经授权不能访问页面";
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout() {
+        SecurityUtils.getSubject().logout();
+        return "login";
     }
 }

@@ -1,11 +1,13 @@
 package com.bai.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -44,12 +46,22 @@ public class ShiroConfig {
          *  role:拥有某个角色权限才能访问
          * */
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+
         // 拦截的请求
+        filterChainDefinitionMap.put("/user/add", "perms[user:add]");
+        filterChainDefinitionMap.put("/user/update", "perms[user:update]");
         filterChainDefinitionMap.put("/user/*", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
-        // 设置登陆的请求
+        // 未授权则重定向登陆的请求
         shiroFilterFactoryBean.setLoginUrl("/toLogin");
+        // 认证失败重定向至认证失败页面请求
+        shiroFilterFactoryBean.setUnauthorizedUrl("/noAuth");
         return shiroFilterFactoryBean;
+    }
+
+    @Bean
+    public ShiroDialect getShiroDialect() {
+        return new ShiroDialect();
     }
 }
