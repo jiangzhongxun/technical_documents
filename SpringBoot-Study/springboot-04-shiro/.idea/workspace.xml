@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bcd0bab-c7e6-4dda-aacb-843bed4b0504" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/UserRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/config/UserRealm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/java/com/bai/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/ShiroConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/UserRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/config/UserRealm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/com/bai/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shiro-springboot/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/shiro-springboot/target/classes/templates/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="8bcd0bab-c7e6-4dda-aacb-843bed4b0504" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,17 +67,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ShiroSpringbootApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ShiroSpringbootApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shiro-springboot" />
       <extension name="coverage">
@@ -134,6 +111,7 @@
       <workItem from="1608210852061" duration="5429000" />
       <workItem from="1608216406554" duration="25000" />
       <workItem from="1608299129781" duration="3748000" />
+      <workItem from="1608359518874" duration="4000" />
     </task>
     <servers />
   </component>
