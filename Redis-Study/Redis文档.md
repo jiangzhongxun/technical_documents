@@ -67,7 +67,7 @@ redis-benchmark -h localhost -p 6379 -c 100 -n 100000
 
 ![image-20201223230001383](Redis文档.assets/image-20201223230001383.png)
 
-# 基础知识
+# 基础知识（五大数据类型）
 
 (Redis命令手册)[https://www.redis.net.cn/order/]
 
@@ -152,5 +152,104 @@ Hvals myhash 	# 获取 myhash 中所有的 value 元素
 Hincrby myhash field1 5 # 设置 myhash 集合中 field1 元素内容自增步长为 5
 Hsetnx myhash field3 java # 向 myhash 集合中添加元素，若 field3 不存在，则添加成功，存在则添加失败
 
+##########################################################
+
+Zadd score 80 zs 90 ls ...	# 同时添加多个值，操作 Zset 集合（有序集合）
+Zrange score 0 -1 			# 查看score集合中所有值
+Zrangebyscore score -inf +inf withscores	# 查看score集合中负无穷到正无穷所有值内容，并排序（从小到大排序）
+Zrem key element			# 从当前集合中移除一个元素
+Zcard key					# 获取集合中的元素个数
+Zcount key start stop		# 获取集合中执行区间的元素数量
+
+```
+
+# 三种特殊数据类型
+
+## geospatial 地理位置
+
+
+
+## hyperloglog
+
+```bash
+127.0.0.1:6379> PFADD mykey a b c d e	# 创建第一组元素
+(integer) 1
+127.0.0.1:6379> PFCOUNT mykey # 统计元素中的数量
+(integer) 5
+127.0.0.1:6379> PFADD mykey2 e f g h i  # 创建第二组元素
+(integer) 1
+127.0.0.1:6379> PFCOUNT mykey2
+(integer) 5
+127.0.0.1:6379> PFmerge mykey3 mykey mykey2 # 合并两组元素 mykey mykey2 -》 mykey3 并集
+OK
+127.0.0.1:6379> PFCOUNT mykey3 # 查看并集的数量
+(integer) 9
+```
+
+如果允许容错，那么一定可以使用 Hyperloglog
+
+如果不允许容错，就是用 set 或者自己的数据类型即可！
+
+## bitmaps
+
+> 位存储
+
+统计用户信息：活跃/不活跃		登陆/未登录		打卡/未打卡   	两个状态的，都可以使用 bitmaps
+
+bitmaps 位图，数据结构，都是操作二进制来进行记录的，就只有 0 和 1 两个状态
+
+```bash
+# 常用命令
+127.0.0.1:6379> SETBIT status 1 1  # 设置周一状态为1
+(integer) 0
+127.0.0.1:6379> SETBIT status 2 1  # 设置周二状态为1
+(integer) 0
+127.0.0.1:6379> SETBIT status 3 1
+(integer) 0
+127.0.0.1:6379> SETBIT status 4 0  # 设置周四状态为0
+(integer) 0
+127.0.0.1:6379> SETBIT status 5 1
+(integer) 0
+127.0.0.1:6379> SETBIT status 6 0
+(integer) 0
+127.0.0.1:6379> SETBIT status 7 9 	# setbit 命令只能操作 0 和 1
+(error) ERR bit is not an integer or out of range
+127.0.0.1:6379> SETBIT status 7 0
+(integer) 0
+127.0.0.1:6379> GETBIT status 5		# 查看某一个是否活跃
+(integer) 1
+127.0.0.1:6379> BITCOUNT status		# 查看全部天数有几天活跃数量统计
+(integer) 4
+```
+
+# Redis 事务
+
+Redis 事务没有隔离级别的概念
+
+所有的命令在事务中，并没有直接被执行！只有发起执行命令时才会执行 Exec
+
+Redis 单条命令是保证原子性的，但是事务并不保证原子性！
+
+Redis的事务：
+
+- 开启事务（multi）
+- 命令入队
+- 执行事务（exec）
+
+```bash
+127.0.0.1:6379> multi	# 开启事务
+OK
+127.0.0.1:6379> set k1 v1	# 命令入队...
+QUEUED
+127.0.0.1:6379> set k2 v2	# 命令入队...
+QUEUED
+127.0.0.1:6379> get k2		# 命令入队...
+QUEUED
+127.0.0.1:6379> exec	# 执行事务，输出结果
+1) OK
+2) OK
+3) "v2"
+
+discard 	# 取消事务命令
 ```
 
