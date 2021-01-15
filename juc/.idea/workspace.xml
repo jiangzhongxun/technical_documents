@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="288f364d-0984-4ff5-b494-79e445aae069" name="Default Changelist" comment="" />
+    <list default="true" id="288f364d-0984-4ff5-b494-79e445aae069" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stream/StreamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stream/StreamTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stream/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stream/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/stream/StreamTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stream/StreamTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/stream/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stream/User.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +23,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/pc/B.java" root0="FORCE_HIGHLIGHTING" />
@@ -30,12 +40,13 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="D:\Soft\apache-maven-3.6.3\repository" />
-        <option name="mavenHome" value="D:/Soft/apache-maven-3.6.3" />
+        <option name="mavenHome" value="D:\Soft\apache-maven-3.6.3" />
         <option name="userSettingsFile" value="D:\Soft\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="1fA5sHYSH9J4w8SsZGB9OnmFQfj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,49 +57,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\IDEA工作空间\juc\src\main\java\com\ys" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DeadLockDemo">
+  <component name="RunManager" selected="JUnit.TestDemo.test2">
     <configuration name="DeadLockDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lock.DeadLockDemo" />
       <module name="juc" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lock.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.future.Demo1" />
-      <module name="juc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.future.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ForkJoinTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.forkjoin.ForkJoinTest" />
-      <module name="juc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.forkjoin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,13 +107,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDemo.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="juc" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestDemo" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDemo.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="juc" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestDemo" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestDemo.test2" />
+        <item itemvalue="JUnit.TestDemo.test1" />
         <item itemvalue="Application.DeadLockDemo" />
         <item itemvalue="Application.SpinLockDemo" />
         <item itemvalue="Application.LazyMan" />
-        <item itemvalue="Application.Demo1" />
-        <item itemvalue="Application.ForkJoinTest" />
       </list>
     </recent_temporary>
   </component>
@@ -156,6 +172,7 @@
       <workItem from="1599573216565" duration="2236000" />
       <workItem from="1599660128363" duration="1817000" />
       <workItem from="1599742586070" duration="320000" />
+      <workItem from="1610721458956" duration="812000" />
     </task>
     <servers />
   </component>
@@ -163,45 +180,33 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="290" y="44" width="1038" height="746" key="#Project_Structure" timestamp="1599573228125">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1610721822898">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="290" y="44" width="1038" height="746" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1599573228125" />
-    <state x="574" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1599661355328">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1610721822898" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1610722274906">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="574" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599661355328" />
-    <state x="-61" y="146" width="1336" height="624" key="DiffContextDialog" timestamp="1595657843263">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1610722274906" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1610722274906">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-61" y="146" width="1336" height="624" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1595657843263" />
-    <state width="949" height="276" key="GridCell.Tab.0.bottom" timestamp="1599661949702">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1610722274906" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1610722274906">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="276" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599661949702" />
-    <state width="949" height="276" key="GridCell.Tab.0.center" timestamp="1599661949702">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1610722274906" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1610722274906">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="276" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599661949702" />
-    <state width="949" height="276" key="GridCell.Tab.0.left" timestamp="1599661949702">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1610722274906" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1610721566177">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="276" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599661949702" />
-    <state width="949" height="276" key="GridCell.Tab.0.right" timestamp="1599661949702">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610721566177" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1610721939486">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="276" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599661949702" />
-    <state x="228" y="45" width="1136" height="718" key="SettingsEditor" timestamp="1599742901093">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="228" y="45" width="1136" height="718" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599742901093" />
-    <state x="454" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1599660144142">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="454" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1599660144142" />
-    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1599573742485">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599573742485" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610721939486" />
   </component>
 </project>

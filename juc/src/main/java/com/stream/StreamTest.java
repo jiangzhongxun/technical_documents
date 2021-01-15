@@ -26,10 +26,18 @@ public class StreamTest {
         List<User> list = Arrays.asList(u1, u2, u3, u4, u5);
 
         list.stream()
-                .filter((u) -> { return u.getId() % 2 == 0; })  // 运用了断定型接口：有一个参数，返回值只能是布尔值
-                .filter((u) -> { return u.getAge() > 23; }) // 运用了断定型接口：有一个参数，返回值只能是布尔值
-                .map((u) -> {return u.getName().toUpperCase(); })   // 运用了函数式接口
-                .sorted((e1, e2) -> { return e2.compareTo(e1); })   // 运用了消费性接口，只有参数，没有返回值
+                .filter((u) -> {
+                    return u.getId() % 2 == 0;
+                })  // 运用了断定型接口：有一个参数，返回值只能是布尔值
+                .filter((u) -> {
+                    return u.getAge() > 23;
+                }) // 运用了断定型接口：有一个参数，返回值只能是布尔值
+                .map((u) -> {
+                    return u.getName().toUpperCase();
+                })   // 运用了函数式接口
+                .sorted((e1, e2) -> {
+                    return e2.compareTo(e1);
+                })   // 运用了消费性接口，只有参数，没有返回值
                 .limit(1)   // 分页操作，提取一个输出
                 .forEach(System.out::println);
     }
